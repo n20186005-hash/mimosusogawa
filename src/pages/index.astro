@@ -1,0 +1,302 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ResponsiveImage from '@/components/ResponsiveImage.astro';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['TouristAttraction', 'Park'],
+    name: 'みもすそ川公園',
+    alternateName: '御裳川公園',
+    description: '壇ノ浦古戦場跡、源義経・平知盛像、長州砲、関門橋を望む海辺の公園。',
+    isAccessibleForFree: true,
+    address: {
+      '@type': 'PostalAddress',
+      postalCode: '751-0813',
+      addressRegion: '山口県',
+      addressLocality: '下関市',
+      streetAddress: 'みもすそ川町'
+    },
+    touristType: ['歴史散策', '写真撮影', 'まち歩き']
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: '公園の入園料は必要ですか？', acceptedAnswer: { '@type': 'Answer', text: '公園は無料で見学できます。' } },
+      { '@type': 'Question', name: '見学にはどれくらいかかりますか？', acceptedAnswer: { '@type': 'Answer', text: '公園だけなら30〜45分、関門トンネル人道の海底県境まで往復するなら約90分が目安です。' } },
+      { '@type': 'Question', name: '本州から九州まで歩けますか？', acceptedAnswer: { '@type': 'Answer', text: '関門トンネル人道を利用して、下関から門司まで歩いて渡れます。' } }
+    ]
+  }
+];
+---
+
+<Layout
+  title="みもすそ川公園ガイド｜壇ノ浦古戦場・関門トンネル人道・アクセス"
+  description="壇ノ浦古戦場を望むみもすそ川公園の見どころ、歴史、アクセス、駐車場、所要時間を紹介。長州砲、関門トンネル人道、唐戸市場と組み合わせた観光コースも案内します。"
+  schema={schema}
+  bodyClass="home"
+>
+  <section class="home-hero" aria-labelledby="home-title">
+    <ResponsiveImage class="home-hero__image" src="/images/hero-statues.jpg" alt="源義経と平知盛の像、その上を渡る関門橋" sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="home-hero__veil"></div>
+    <div class="home-hero__texture"></div>
+    <div class="shell shell--wide home-hero__content">
+      <p class="home-hero__place">山口県下関市・早鞆ノ瀬戸</p>
+      <h1 id="home-title">海峡の風と、<br /><span>八百年の記憶。</span></h1>
+      <p class="home-hero__lead">壇ノ浦古戦場、長州砲、関門トンネル人道。<br />本州と九州が向かい合う、歴史の海辺を歩く。</p>
+      <div class="home-hero__actions">
+        <a class="button button--light" href="#highlights">見どころを知る <span class="button__icon" aria-hidden="true">↓</span></a>
+        <a class="button button--ghost-light" href="/access/">アクセスを見る <span class="button__icon" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <p class="home-hero__vertical">潮の記憶をたどる</p>
+    <p class="home-hero__caption">みもすそ川公園から望む関門橋</p>
+  </section>
+
+  <aside class="quick-facts" aria-label="旅の基本情報">
+    <div class="shell quick-facts__inner">
+      <div class="quick-fact"><span class="quick-fact__icon">¥</span><p><strong>入園無料</strong>海辺を自由に散策</p></div>
+      <div class="quick-fact"><span class="quick-fact__icon">時</span><p><strong>30〜45分</strong>公園見学の目安</p></div>
+      <div class="quick-fact"><span class="quick-fact__icon">歩</span><p><strong>約90分</strong>海底県境まで往復</p></div>
+      <div class="quick-fact"><span class="quick-fact__icon">停</span><p><strong>バス停すぐ</strong>「御裳川」で下車</p></div>
+      <div class="quick-fact"><span class="quick-fact__icon">景</span><p><strong>歴史・写真・散歩</strong>三つの楽しみ方</p></div>
+    </div>
+  </aside>
+
+  <section class="section washi-texture">
+    <div class="shell intro-grid">
+      <div class="intro-grid__title" data-reveal>
+        <p class="kicker">海峡から始まる旅</p>
+        <h2>一つの海峡、<br /><em>二つ</em>の戦い、<br />三つの体験。</h2>
+      </div>
+      <div class="intro-grid__copy" data-reveal>
+        <p>みもすそ川公園の前に広がるのは、関門海峡で最も幅が狭い早鞆ノ瀬戸。潮が筋を描き、船が間近を通り、頭上には関門橋が架かります。</p>
+        <p>ここは、源氏と平家の最後の戦いが繰り広げられた壇ノ浦であり、幕末には長州藩が外国船に向けて砲台を築いた場所。そして今は、海底の人道を歩いて本州から九州へ渡る旅の出発点です。</p>
+        <blockquote class="intro-grid__quote">
+          <span aria-hidden="true">潮</span>
+          <p>公園を見るだけで終わらせず、目の前の海と、対岸へ続く道まで歩いてみる。そこで初めて、関門海峡の大きさが立ち上がります。</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" id="highlights">
+    <div class="shell">
+      <SectionHeading eyebrow="ここでしかできないこと" title="海峡を味わう、三つの入口。" lead="歴史を読む、幕末の転換点に触れる、そして海の底を歩く。小さな公園から、関門海峡全体へ旅が広がります。" />
+      <div class="experiences">
+        <article class="experience-card" data-reveal>
+          <img src="/images/hero-statues-720.jpg" alt="関門橋の下に立つ源義経と平知盛の像" loading="lazy" />
+          <span class="experience-card__number">一</span>
+          <div class="experience-card__content">
+            <h3>壇ノ浦</h3>
+            <p>源氏と平家、最後の決戦。その海を、像と潮の流れから読み解きます。</p>
+            <a href="/history/">物語をたどる <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="experience-card" data-reveal>
+          <img src="/images/choshu-cannons-720.jpg" alt="関門海峡へ向けて並ぶ長州砲" loading="lazy" />
+          <span class="experience-card__number">二</span>
+          <div class="experience-card__content">
+            <h3>長州砲</h3>
+            <p>攘夷から開国へ。近代日本の針路が動いた幕末の海峡を知ります。</p>
+            <a href="/history/#choshu">幕末を知る <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="experience-card" data-reveal>
+          <img src="/images/tunnel-interior-720.jpg" alt="関門トンネル人道の内部" loading="lazy" />
+          <span class="experience-card__number">三</span>
+          <div class="experience-card__content">
+            <h3>海底を歩く</h3>
+            <p>780mの人道を抜け、本州から九州へ。県境は海面の下にあります。</p>
+            <a href="/kanmon-tunnel/">歩き方を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="shell wars-shell">
+      <div class="wars-intro" data-reveal>
+        <h2>二つの戦いが、<br />同じ海峡に残したもの。</h2>
+        <p>約七百年を隔てて、関門海峡は二度、日本の歴史が大きく動く舞台になりました。像と砲台を別々の展示として見るのではなく、海峡という一本の軸でつないでみます。</p>
+      </div>
+      <div class="wars-grid">
+        <article class="war-card" data-reveal>
+          <span class="war-card__year">一一八五</span>
+          <p class="war-card__label">源平合戦の最終決戦</p>
+          <h3>壇ノ浦の戦い</h3>
+          <p>追い詰められた平家と、それを追う源氏。幼い安徳天皇の入水まで語り継がれる、武家の時代の転換点です。</p>
+          <a href="/history/#dannoura">現地で見る物語</a>
+        </article>
+        <article class="war-card" data-reveal>
+          <span class="war-card__year">一八六三―六四</span>
+          <p class="war-card__label">攘夷戦と下関戦争</p>
+          <h3>海峡に向けられた砲</h3>
+          <p>長州藩は海峡沿いに砲台を築き、外国船と衝突。敗戦を経て、藩の視線は攘夷から開国へと移っていきます。</p>
+          <a href="/history/#choshu">長州砲から読む幕末</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="park-map">
+    <div class="shell">
+      <SectionHeading eyebrow="歩くための園内図" title="海峡のすぐそばに、物語が並ぶ。" lead="番号を選ぶと、それぞれの見どころが分かります。公園を見たあとは、そのまま関門トンネル人道へ歩けます。" />
+      <div class="map-layout" data-park-map data-reveal>
+        <div class="park-map" role="group" aria-label="みもすそ川公園と関門トンネル人道の簡略地図。番号を選ぶと見どころの説明が切り替わります">
+          <div class="park-map__water"></div><div class="park-map__land"></div><div class="park-map__park"></div>
+          <div class="park-map__bridge"></div><div class="park-map__tunnel-line"></div>
+          <span class="park-map__coast-label park-map__coast-label--honshu">本州・下関</span>
+          <span class="park-map__coast-label park-map__coast-label--kyushu">九州・門司</span>
+          <span class="park-map__strait">関門海峡</span>
+          <button class="map-marker map-marker--1 is-active" type="button" data-map-marker="statues" aria-label="源義経・平知盛像" aria-pressed="true">01</button>
+          <button class="map-marker map-marker--2" type="button" data-map-marker="monument" aria-label="壇ノ浦古戦場碑" aria-pressed="false">02</button>
+          <button class="map-marker map-marker--3" type="button" data-map-marker="cannons" aria-label="長州砲" aria-pressed="false">03</button>
+          <button class="map-marker map-marker--4" type="button" data-map-marker="promenade" aria-label="海峡プロムナード" aria-pressed="false">04</button>
+          <button class="map-marker map-marker--5" type="button" data-map-marker="tunnel" aria-label="関門トンネル人道" aria-pressed="false">05</button>
+        </div>
+        <div class="map-detail" aria-live="polite">
+          <span class="map-detail__number" data-map-number>01</span>
+          <h3 data-map-title>源義経・平知盛像</h3>
+          <p data-map-description>八艘飛びの義経と、碇を背負う知盛。海峡を背に向き合う、公園の象徴です。</p>
+          <a class="button button--ghost-light" href="/park-guide/">すべての見どころ <span class="button__icon" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="map-legend"><span><i></i>関門橋</span><span><i></i>関門トンネル人道</span><span>※位置関係を示す簡略図です</span></div>
+      <div class="map-facilities" aria-label="周辺施設">
+        <a href="/access/"><span aria-hidden="true">停</span><p><strong>御裳川バス停</strong>公園のすぐ近く</p></a>
+        <a href="/access/#parking"><span aria-hidden="true">車</span><p><strong>無料駐車場</strong>一般車40台・大型バス1台</p></a>
+        <a href="/access/#parking"><span aria-hidden="true">便</span><p><strong>多機能トイレ</strong>人道下関側入口に設置</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="旅の時間を選ぶ" title="どれくらい時間がありますか？" lead="短い立ち寄りから、海峡を横断する半日旅まで。使える時間に合わせて、景色と物語の密度を変えられます。" align="center" />
+      <div class="planner" data-planner data-reveal>
+        <div class="planner__buttons" role="group" aria-label="所要時間を選択">
+          <button type="button" class="is-active" data-plan-button="short" aria-pressed="true">30分 <span>→</span></button>
+          <button type="button" data-plan-button="standard" aria-pressed="false">90分 <span>→</span></button>
+          <button type="button" data-plan-button="long" aria-pressed="false">3時間 <span>→</span></button>
+          <button type="button" data-plan-button="halfday" aria-pressed="false">半日 <span>→</span></button>
+        </div>
+        <div class="planner__panel" aria-live="polite">
+          <div>
+            <p class="planner__time" data-plan-time>30分</p>
+            <h3 data-plan-title>公園の核心をめぐる</h3>
+            <p class="planner__description" data-plan-description>像、古戦場碑、長州砲、関門橋。短い時間でも「二つの戦い」が一本につながります。</p>
+            <span class="planner__distance" data-plan-distance>園内をゆっくり約600m</span>
+          </div>
+          <ol class="planner__stops" data-plan-stops>
+            <li><span>01</span>御裳川バス停</li><li><span>02</span>義経・知盛像</li><li><span>03</span>古戦場碑</li><li><span>04</span>長州砲</li><li><span>05</span>関門橋</li>
+          </ol>
+        </div>
+      </div>
+      <div style="margin-top:32px;text-align:center"><a class="text-link" href="/itineraries/">すべてのモデルコースを見る <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell tunnel-feature">
+      <div class="tunnel-collage" data-reveal>
+        <img class="tunnel-collage__main" src="/images/tunnel-interior-720.jpg" alt="ゆるやかな勾配が続く関門トンネル人道" loading="lazy" />
+        <img class="tunnel-collage__small" src="/images/prefecture-border-720.jpg" alt="関門トンネル人道の山口県と福岡県の県境" loading="lazy" />
+        <span class="tunnel-collage__badge">海面下<br />約58メートル</span>
+      </div>
+      <div class="tunnel-copy" data-reveal>
+        <p class="kicker">本州から九州へ</p>
+        <h2>海の底で、<br />県境をまたぐ。</h2>
+        <p>公園から関門プラザへ歩き、エレベーターで地下へ。ひんやりした人道を進むと、道の中央に山口県と福岡県の県境があります。向こう側へ抜ければ、そこは門司です。</p>
+        <div class="tunnel-facts">
+          <div class="tunnel-fact"><strong>780m</strong><span>人道の全長</span></div>
+          <div class="tunnel-fact"><strong>約15分</strong><span>片道の目安</span></div>
+          <div class="tunnel-fact"><strong>無料</strong><span>歩行者</span></div>
+        </div>
+        <a class="button button--primary" href="/kanmon-tunnel/">歩き方と注意点 <span class="button__icon" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="旅をつなぐ" title="海峡の物語を、もう一歩先へ。" lead="安徳天皇を祀る赤間神宮、食の賑わいが集まる唐戸市場、対岸の門司港。公園の前後に加えると、一日の輪郭が見えてきます。" />
+      <div class="nearby-grid">
+        <a class="nearby-card" href="/itineraries/#halfday" data-reveal>
+          <img src="/images/akama-shrine-720.jpg" alt="赤間神宮の水天門" loading="lazy" />
+          <div class="nearby-card__content"><span class="nearby-card__tag">歴史をつなぐ</span><h3>赤間神宮</h3><p>壇ノ浦で入水した安徳天皇を祀る、物語のもう一つの舞台。</p></div>
+        </a>
+        <a class="nearby-card" href="/food/" data-reveal>
+          <img src="/images/karato-sushi-720.jpg" alt="唐戸市場で並ぶ握り寿司" loading="lazy" />
+          <div class="nearby-card__content"><span class="nearby-card__tag">海の幸を味わう</span><h3>唐戸市場</h3><p>市場の寿司や海鮮を楽しんでから、バスで公園へ。</p></div>
+        </a>
+        <a class="nearby-card" href="/itineraries/#three-hours" data-reveal>
+          <img src="/images/mojiko-retro-720.jpg" alt="門司港レトロの旧門司税関周辺" loading="lazy" />
+          <div class="nearby-card__content"><span class="nearby-card__tag">海底の向こう側</span><h3>門司港</h3><p>人道を抜けた先から、レトロな港町へ旅を伸ばします。</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="写真に残す" title="橋、像、砲、潮。構図は海峡がつくる。" lead="橋の大きな斜線、潮の筋、貨物船の動き。少し立ち位置を変えるだけで、現代の風景と歴史のモニュメントが重なります。" />
+      <div class="photo-strip" data-reveal>
+        <figure><img src="/images/hero-statues-720.jpg" alt="源義経・平知盛像と関門橋" loading="lazy" /><figcaption>像と関門橋 — 公園を象徴する一枚</figcaption></figure>
+        <figure><img src="/images/choshu-cannons-720.jpg" alt="長州砲と関門海峡" loading="lazy" /><figcaption>砲口の先に船を待つ</figcaption></figure>
+        <figure><img src="/images/mimosuso-bridge-720.jpg" alt="みもすそ川公園の赤い橋" loading="lazy" /><figcaption>橋の下の小さな赤い橋</figcaption></figure>
+        <figure><img src="/images/prefecture-border-720.jpg" alt="関門トンネル人道の県境" loading="lazy" /><figcaption>海底県境 — 旅の証になる場所</figcaption></figure>
+      </div>
+      <div style="margin-top:30px"><a class="text-link" href="/photo-spots/">撮影ポイントと光の向きを見る <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell access-panel" data-reveal>
+      <div class="access-panel__copy">
+        <p class="kicker">迷わず海峡へ</p>
+        <h2>御裳川バス停、<br />降りてすぐ。</h2>
+        <p>下関駅からはバス、自動車なら下関インターチェンジ方面から。門司側からは、人道を歩いて直接公園へ着けます。</p>
+        <ul class="access-routes">
+          <li><strong>下関駅から</strong><span>バスで約12〜15分</span></li>
+          <li><strong>唐戸から</strong><span>バスで御裳川方面へ</span></li>
+          <li><strong>自動車</strong><span>下関インターチェンジから約10分</span></li>
+          <li><strong>門司側から</strong><span>関門トンネル人道を徒歩で</span></li>
+        </ul>
+        <a class="button button--primary" href="/access/">行き方を詳しく見る <span class="button__icon" aria-hidden="true">→</span></a>
+      </div>
+      <div class="access-panel__image">
+        <img src="/images/tunnel-building-720.jpg" alt="みもすそ川公園近くの関門トンネル人道入口" loading="lazy" />
+        <div class="access-panel__pin"><p><strong>みもすそ川公園</strong>山口県下関市みもすそ川町</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="よくある質問" title="出発前に、知っておきたいこと。" />
+      <div class="faq-list narrow">
+        <details><summary><span class="faq-list__q">問</span><span>公園の入園料は必要ですか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>公園は無料で見学できます。源義経・平知盛像、古戦場碑、長州砲、海峡の景色を自由に楽しめます。</p></div></details>
+        <details><summary><span class="faq-list__q">問</span><span>見学にはどれくらいかかりますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>公園だけなら30〜45分が目安です。関門トンネル人道の県境まで往復するなら約90分、門司側へ抜けて散策するなら3時間ほど見ておくとゆったり歩けます。</p></div></details>
+        <details><summary><span class="faq-list__q">問</span><span>本州から九州まで歩けますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>関門トンネル人道を利用して、下関から門司まで歩けます。全長780m、片道約15分が目安です。</p></div></details>
+        <details><summary><span class="faq-list__q">問</span><span>雨の日でも楽しめますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>園内は屋外ですが、人道は雨を避けて歩けます。海風が強い日は傘が扱いにくいため、雨具があると安心です。</p></div></details>
+        <details><summary><span class="faq-list__q">問</span><span>紙芝居や長州砲の演出はいつ見られますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>通常の実施時間がありますが、天候や運営状況により変更されることがあります。出発前に山口県観光サイトなどの最新情報をご確認ください。</p></div></details>
+        <details><summary><span class="faq-list__q">問</span><span>ベビーカーや子ども連れでも歩けますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>園内はおおむね平坦で、人道入口にはエレベーターがあります。人道は長い緩やかな坂になるため、往復時間と体力に余裕を持つのがおすすめです。</p></div></details>
+      </div>
+      <div style="margin-top:34px;text-align:center"><a class="text-link" href="/faq/">すべての質問を見る <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="closing-cta">
+    <img src="/images/hero-statues-1440.jpg" alt="源義経・平知盛像と関門橋" loading="lazy" />
+    <div class="shell closing-cta__content">
+      <p class="kicker" style="color:#c6d8d1">次の休日、海峡へ</p>
+      <h2>八百年を越えて、<br />潮は今日も流れている。</h2>
+      <p>まずは見たいものと使える時間を選び、関門海峡を歩く一日を組み立ててみてください。</p>
+      <a class="button button--light" href="/itineraries/">旅のルートを選ぶ <span class="button__icon" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Layout>

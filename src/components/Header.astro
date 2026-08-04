@@ -1,0 +1,36 @@
+---
+import Logo from './Logo.astro';
+import { navItems, relatedNav } from '@/data/site';
+---
+
+<a class="skip-link" href="#main-content">本文へ移動</a>
+<header class="site-header" data-header>
+  <div class="site-header__inner shell shell--wide">
+    <a href="/" class="site-header__logo" aria-label="みもすそ川公園 トップページ">
+      <Logo />
+    </a>
+    <nav class="desktop-nav" aria-label="メインナビゲーション">
+      {navItems.map((item) => (
+        <a href={item.href} data-nav-link>{item.label}</a>
+      ))}
+      <a class="desktop-nav__more" href="/faq/">旅の手引き</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+      <span class="menu-toggle__label">メニュー</span>
+      <span class="menu-toggle__lines" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+    <nav class="mobile-menu__inner shell" aria-label="モバイルナビゲーション">
+      <p class="mobile-menu__eyebrow">旅の入口を選ぶ</p>
+      <div class="mobile-menu__primary">
+        {navItems.map((item, index) => (
+          <a href={item.href} data-nav-link><span>0{index + 1}</span>{item.label}</a>
+        ))}
+      </div>
+      <div class="mobile-menu__secondary">
+        {relatedNav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </div>
+    </nav>
+  </div>
+</header>

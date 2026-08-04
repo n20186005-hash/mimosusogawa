@@ -1,0 +1,37 @@
+---
+import Logo from './Logo.astro';
+import { navItems, relatedNav } from '@/data/site';
+---
+
+<footer class="site-footer">
+  <div class="site-footer__wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="M0 62C210 6 385 8 584 48c203 41 344 50 510 8 146-37 240-38 346-9v49H0Z" fill="currentColor" /></svg>
+  </div>
+  <div class="shell site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" aria-label="トップページへ"><Logo light /></a>
+      <p>二つの戦いが刻まれた海峡へ。<br />歴史を知り、潮を眺め、海の底を歩く。</p>
+    </div>
+    <div class="site-footer__nav">
+      <div>
+        <p>海峡を知る</p>
+        {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+      </div>
+      <div>
+        <p>旅を深める</p>
+        {relatedNav.map((item) => <a href={item.href}>{item.label}</a>)}
+        <a href="/photo-spots/#credits">写真クレジット</a>
+      </div>
+    </div>
+  </div>
+  <div class="shell site-footer__bottom">
+    <p>みもすそ川公園・壇ノ浦・関門海峡 旅の案内</p>
+    <a href="#top">ページ上部へ <span aria-hidden="true">↑</span></a>
+  </div>
+</footer>
+
+<nav class="mobile-tools" aria-label="旅の便利リンク">
+  <a href="/itineraries/"><span aria-hidden="true">↗</span>ルート</a>
+  <a href="https://www.sandenkotsu.co.jp/" target="_blank" rel="noopener"><span aria-hidden="true">◫</span>バス</a>
+  <a href="/access/#parking"><span aria-hidden="true">車</span>駐車場</a>
+</nav>

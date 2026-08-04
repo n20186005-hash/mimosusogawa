@@ -1,0 +1,22 @@
+---
+interface Props {
+  compact?: boolean;
+  light?: boolean;
+}
+
+const { compact = false, light = false } = Astro.props;
+---
+
+<span class:list={['brand', { 'brand--compact': compact, 'brand--light': light }]}> 
+  <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+    <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="1.4" />
+    <path d="M13 29c10-11 28-11 38 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    <path d="M18 29v6m28-6v6M23 26v8m18-8v8" fill="none" stroke="currentColor" stroke-width="1.4" />
+    <path d="M12 39c5-3 8 3 13 0s8 3 13 0 8 3 14 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+    <path d="M32 34v12m-5-5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+  <span class="brand__type">
+    <strong>みもすそ川公園</strong>
+    <small>壇ノ浦と関門海峡を歩く</small>
+  </span>
+</span>

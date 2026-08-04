@@ -1,0 +1,68 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<Layout title="関門トンネル人道を歩く" description="関門トンネル人道の所要時間、料金、入口、海底県境、歩き方を紹介。みもすそ川公園から本州と九州を歩いて渡る旅を案内します。">
+  <PageHero eyebrow="本州から九州へ" title="海の底を、歩いて渡る。" lead="下関・御裳川から門司・和布刈まで780m。エレベーターで地下へ降り、海面の下で山口県と福岡県の県境を越えます。" image="/images/tunnel-interior.jpg" imageAlt="関門トンネル人道のまっすぐ続く通路" position="center" />
+
+  <section class="section">
+    <div class="shell page-intro">
+      <h2 data-reveal>入口は公園のそば。<br />出口は九州。</h2>
+      <div class="page-intro__copy" data-reveal>
+        <p>関門トンネル人道は、車道の下に設けられた歩行者用の海底トンネルです。下関側はみもすそ川公園から歩いてすぐ。門司側は和布刈神社や関門橋を望む海辺につながります。</p>
+        <p>人道はゆるやかな勾配が続き、中央付近に山口県と福岡県の県境表示があります。歩いて渡るだけなら片道約15分。写真を撮り、両岸を少し散策するなら、少なくとも90分ほど見ておくのがおすすめです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white section--tight">
+    <div class="shell fact-bar">
+      <div class="fact-bar__item"><strong>780m</strong><span>人道の全長</span></div>
+      <div class="fact-bar__item"><strong>約15分</strong><span>片道の所要目安</span></div>
+      <div class="fact-bar__item"><strong>6時〜22時</strong><span>通行できる時間</span></div>
+      <div class="fact-bar__item"><strong>歩行無料</strong><span>自転車・原付は20円</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="下関側から歩く" title="海底県境まで、五つの場面。" />
+      <div class="content-grid">
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/hero-statues-720.jpg" alt="みもすそ川公園の像と関門橋" loading="lazy" /><span class="content-card__number">01</span></div><div class="content-card__body"><p class="content-card__tag">出発</p><h3>公園で海を見る</h3><p>まず海峡の幅と対岸の近さを確認。これから、その海の下を歩きます。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/tunnel-building-720.jpg" alt="関門トンネル人道下関側の入口施設" loading="lazy" /><span class="content-card__number">02</span></div><div class="content-card__body"><p class="content-card__tag">関門プラザ</p><h3>入口へ歩く</h3><p>公園から入口施設まではすぐ。案内表示に沿ってエレベーターへ向かいます。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/tunnel-entrance-720.jpg" alt="関門トンネル人道へ下りる施設" loading="lazy" /><span class="content-card__number">03</span></div><div class="content-card__body"><p class="content-card__tag">地下へ</p><h3>エレベーターで降りる</h3><p>下関側の地下通路へ。自転車や原付は20円で、乗らずに押して通行します。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/tunnel-interior-720.jpg" alt="関門トンネル人道の内部" loading="lazy" /><span class="content-card__number">04</span></div><div class="content-card__body"><p class="content-card__tag">海底散歩</p><h3>ゆるやかな坂を進む</h3><p>通勤や運動で利用する人もいる生活の道。中央線を意識し、周囲に気を配って歩きます。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/prefecture-border-720.jpg" alt="山口県と福岡県の海底県境表示" loading="lazy" /><span class="content-card__number">05</span></div><div class="content-card__body"><p class="content-card__tag">海面の下</p><h3>県境をまたぐ</h3><p>山口県と福岡県の表示は人気の撮影場所。立ち止まるときは通行の妨げにならないように。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/moji-port-720.jpg" alt="門司港中心部の水辺と歴史的建築" loading="lazy" /><span class="content-card__number">06</span></div><div class="content-card__body"><p class="content-card__tag">九州側</p><h3>門司港へ足を延ばす</h3><p>和布刈側へ上がれば九州。神社や海辺を歩き、さらに門司港中心部まで旅を伸ばせます。</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="shell feature-row feature-row--reverse">
+      <div class="feature-row__image" data-reveal><img src="/images/prefecture-border-720.jpg" alt="関門トンネル人道の県境" loading="lazy" /></div>
+      <div class="feature-row__copy" data-reveal>
+        <p class="kicker" style="color:#b8cfc6">ここが旅の真ん中</p>
+        <h2 style="color:white">海面下約58メートル。<br />二つの県に立つ。</h2>
+        <p style="color:rgba(255,255,255,.72)">県境表示の両側に足を置けば、片足は山口県、もう片足は福岡県。海の底にいることは景色からは分かりませんが、海面を船が行き交い、近くには関門橋が架かっています。</p>
+        <div class="notice" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.72);border-color:#b8cfc6"><span>礼</span><div>人道は観光地であると同時に、日常の通行路です。横に広がらず、撮影後は速やかに道を譲りましょう。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="歩く前の手引き" title="子ども連れ、自転車、荷物。" />
+      <div class="transport-grid">
+        <article class="transport-card"><span class="transport-card__icon">子</span><h3>子ども・ベビーカー</h3><p class="transport-card__time">時間に余裕を</p><p>下関側入口にはエレベーターと多機能トイレがあります。人道内は長いゆるやかな坂のため、往復する場合は休憩を含めて計画してください。</p></article>
+        <article class="transport-card"><span class="transport-card__icon">輪</span><h3>自転車・原付</h3><p class="transport-card__time">20円・押して通行</p><p>通行料は20円です。乗車せずに押して、歩行者に配慮しながら通行します。</p></article>
+        <article class="transport-card"><span class="transport-card__icon">荷</span><h3>大きな荷物</h3><p class="transport-card__time">両岸の移動を確認</p><p>キャリーケースでも通行できますが、坂と距離があります。門司側へ抜けた後の移動手段まで決めておくと安心です。</p></article>
+        <article class="transport-card"><span class="transport-card__icon">雨</span><h3>雨の日</h3><p class="transport-card__time">人道は歩きやすい</p><p>トンネル内は雨を避けられます。入口までの海沿いは風が強いことがあるため、傘より雨具が扱いやすい場合があります。</p></article>
+      </div>
+      <div class="notice" style="margin-top:26px"><span>注</span><div>通行時間や料金、設備の運用は変更される場合があります。出発前に下関観光サイトの最新情報をご確認ください。</div></div>
+      <div style="margin-top:28px"><a class="button button--primary" href="https://shimonoseki-kgb.jp/spot/%E9%96%A2%E9%96%80%E3%83%88%E3%83%B3%E3%83%8D%E3%83%AB%E4%BA%BA%E9%81%93/" target="_blank" rel="noopener">最新の人道情報を見る <span class="button__icon" aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+</Layout>

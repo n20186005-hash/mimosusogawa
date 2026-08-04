@@ -1,0 +1,52 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { photoCredits } from '@/data/site';
+---
+
+<Layout title="撮影ガイド" description="みもすそ川公園の源義経・平知盛像、長州砲、関門橋、潮流、関門トンネル人道の県境を撮るおすすめ構図と条件を紹介します。">
+  <PageHero eyebrow="海峡を撮る" title="大きな橋と、小さな立ち位置。" lead="像に橋を重ねる。砲口の先に船を待つ。潮の筋を光で拾う。少し動くだけで、歴史と現代が同じ一枚に入ります。" image="/images/hero-statues.jpg" imageAlt="源義経・平知盛像、関門橋、関門海峡" position="center 55%" />
+
+  <section class="section">
+    <div class="shell page-intro">
+      <h2 data-reveal>主役は史跡。<br />構図をつくるのは海峡。</h2>
+      <div class="page-intro__copy" data-reveal>
+        <p>関門橋は画面を横切る大きな線になり、潮流は光の模様をつくり、船は写真に動きと尺度を加えます。像や砲だけを正面から撮るより、海峡の要素を一つ重ねると、この場所らしい写真になります。</p>
+        <p>海沿いでは風が強い日があります。三脚を使う場合は通行を妨げず、夜は足元と車道に注意してください。人道の県境では、撮影のために通路を塞がないことが大切です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="六つの撮影ポイント" title="立つ場所と、待つもの。" />
+      <div class="photo-guide-grid">
+        <article class="photo-guide-card" data-reveal><div class="photo-guide-card__image"><img src="/images/hero-statues-720.jpg" alt="源義経・平知盛像と関門橋" loading="lazy" /><span class="photo-guide-card__badge">公園の定番</span></div><div class="photo-guide-card__body"><h3>像と関門橋</h3><p>像を低めに置き、橋を上部へ斜めに通します。少し離れて二体を入れるか、義経側へ寄って動きを強調します。</p><div class="shooting-conditions"><span>広角</span><span>横位置</span><span>橋の斜線</span><span>人物を待つ</span></div></div></article>
+        <article class="photo-guide-card" data-reveal><div class="photo-guide-card__image"><img src="/images/choshu-cannons-720.jpg" alt="長州砲と関門海峡" loading="lazy" /><span class="photo-guide-card__badge">船を待つ</span></div><div class="photo-guide-card__body"><h3>長州砲と貨物船</h3><p>砲身の延長線に船が入る瞬間を待ちます。安全な園路側から、海峡の奥行きを残して構図を整えます。</p><div class="shooting-conditions"><span>標準〜中望遠</span><span>連写</span><span>船の位置</span></div></div></article>
+        <article class="photo-guide-card" data-reveal><div class="photo-guide-card__image"><img src="/images/strait-wide.jpg" alt="関門海峡の潮流と船" loading="lazy" /><span class="photo-guide-card__badge">海の表情</span></div><div class="photo-guide-card__body"><h3>潮の筋と航路</h3><p>斜光が入ると、水面の流れが見えやすくなります。望遠で一部を切り取ると、渦や船の引き波が模様になります。</p><div class="shooting-conditions"><span>朝・夕</span><span>中望遠</span><span>反射を観察</span></div></div></article>
+        <article class="photo-guide-card" data-reveal><div class="photo-guide-card__image"><img src="/images/hero-statues-720.jpg" alt="公園から望む関門橋と源義経・平知盛像" loading="lazy" /><span class="photo-guide-card__badge">構造美</span></div><div class="photo-guide-card__body"><h3>橋を見上げる</h3><p>橋脚や橋桁を画面の端から伸ばし、海峡の向こうへ視線を導きます。曇りの日は鋼構造の陰影が穏やかに出ます。</p><div class="shooting-conditions"><span>超広角</span><span>縦位置</span><span>曇天も好相性</span></div></div></article>
+        <article class="photo-guide-card" data-reveal><div class="photo-guide-card__image"><img src="/images/mimosuso-bridge-720.jpg" alt="公園の赤い橋と関門橋" loading="lazy" /><span class="photo-guide-card__badge">大小の橋</span></div><div class="photo-guide-card__body"><h3>赤い橋と関門橋</h3><p>園内の赤い橋を前景に、巨大な関門橋を重ねます。二つの橋の色と大きさの差が、奥行きをつくります。</p><div class="shooting-conditions"><span>広角</span><span>前景</span><span>低い目線</span></div></div></article>
+        <article class="photo-guide-card" data-reveal><div class="photo-guide-card__image"><img src="/images/prefecture-border-720.jpg" alt="関門トンネル人道の山口県と福岡県の県境" loading="lazy" /><span class="photo-guide-card__badge">旅の証</span></div><div class="photo-guide-card__body"><h3>海底県境</h3><p>両県の表示が入る位置から、通路の奥行きをまっすぐに。人の流れが切れた瞬間に短く撮影します。</p><div class="shooting-conditions"><span>縦位置</span><span>左右対称</span><span>通行を優先</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="shell feature-row feature-row--reverse">
+      <div class="feature-row__image" data-reveal><img src="/images/strait-wide.jpg" alt="関門海峡の広がりと関門橋" loading="lazy" /></div>
+      <div class="feature-row__copy" data-reveal><p class="kicker" style="color:#b8cfc6">光を選ぶ</p><h2 style="color:white">晴れだけが、<br />正解ではない。</h2><p style="color:rgba(255,255,255,.72)">晴天は海峡の青と像の輪郭が出やすく、曇天は青銅や鋼の質感を穏やかに描けます。雨上がりは濡れた路面に橋や灯りが映り、風の強い日は潮の速さが目に見えます。天候ごとの表情を、その日の記録にしてください。</p></div>
+    </div>
+  </section>
+
+  <section class="section section--white" id="credits">
+    <div class="shell">
+      <SectionHeading eyebrow="写真について" title="掲載写真の出典。" lead="実景が正しく伝わるよう、観光宣伝での利用が認められた公式配布写真と、利用条件が明確な共有写真を使用しています。" />
+      <div class="credit-list">
+        {photoCredits.map((credit) => (
+          <div class="credit-item"><strong>{credit.work}</strong><span>{credit.author}</span><span>{credit.license}</span><a href={credit.href} target="_blank" rel="noopener">出典を見る</a></div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

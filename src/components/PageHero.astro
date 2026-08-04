@@ -1,0 +1,26 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  image: string;
+  imageAlt: string;
+  position?: string;
+}
+
+const { eyebrow, title, lead, image, imageAlt, position = 'center' } = Astro.props;
+---
+
+<section class="page-hero">
+  <ResponsiveImage src={image} alt={imageAlt} style={`object-position:${position}`} sizes="100vw" loading="eager" fetchpriority="high" />
+  <div class="page-hero__veil"></div>
+  <div class="shell page-hero__content">
+    <a href="/" class="page-hero__back"><span aria-hidden="true">←</span> トップへ</a>
+    <p class="page-hero__eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="page-hero__lead">{lead}</p>
+  </div>
+  <div class="page-hero__number" aria-hidden="true">関門</div>
+</section>

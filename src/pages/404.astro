@@ -1,0 +1,15 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="ページが見つかりません" description="お探しのページは見つかりませんでした。" bodyClass="not-found">
+  <section class="closing-cta" style="margin-bottom:95px;min-height:calc(100svh - 84px)">
+    <img src="/images/strait-wide.jpg" alt="関門海峡と関門橋" />
+    <div class="shell closing-cta__content" style="min-height:calc(100svh - 84px)">
+      <p class="kicker" style="color:#c6d8d1">道を戻る</p>
+      <h1 style="font-family:var(--serif);font-size:clamp(2.7rem,6vw,5.5rem);font-weight:500;line-height:1.35;letter-spacing:.1em;margin-bottom:24px">この先に、<br />ページはありません。</h1>
+      <p>アドレスが変わったか、入力された場所が違うようです。トップページから、もう一度旅の入口を選んでください。</p>
+      <a class="button button--light" href="/">トップページへ戻る <span class="button__icon" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Layout>

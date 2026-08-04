@@ -1,0 +1,59 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<Layout title="園内の見どころ" description="源義経・平知盛像、壇ノ浦古戦場碑、長州砲、御裳川碑、関門橋など、みもすそ川公園の見どころを歩く順に紹介します。">
+  <PageHero eyebrow="公園を歩く" title="海峡のそばに、歴史が立つ。" lead="像、碑、砲台、橋、潮の流れ。目の前にあるものを順に見ていくと、壇ノ浦から幕末、現代までが一本につながります。" image="/images/statues-close.jpg" imageAlt="源義経と平知盛の像、関門海峡と関門橋" position="center 55%" />
+
+  <section class="section">
+    <div class="shell page-intro">
+      <h2 data-reveal>小さな園内に、<br />八百年が重なる。</h2>
+      <div class="page-intro__copy" data-reveal>
+        <p>みもすそ川公園は、遊具や広場を目的に訪れる公園というより、関門海峡の歴史を現地の景色とともに読む場所です。源義経と平知盛の像は壇ノ浦の戦いを、海峡へ向く長州砲は幕末の下関戦争を伝えます。</p>
+        <p>海沿いのプロムナードでは、流れる潮と大型船がすぐ近くに見えます。歴史の展示を見たあとに海へ目を移すと、なぜこの狭い水路が時代の舞台になったのか、地形からも感じられます。</p>
+        <div class="page-intro__meta"><span>入園無料</span><span>所要30〜45分</span><span>おおむね平坦</span><span>バス停すぐ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="園内八景" title="歩く順に、見ておきたいもの。" lead="バス停側から海峡沿いへ。順番通りでも、気になる場所からでも。すべて歩いて見て回れます。" />
+      <div class="content-grid">
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/statues-close-720.jpg" alt="源義経と平知盛の像" loading="lazy" /><span class="content-card__number">01</span></div><div class="content-card__body"><p class="content-card__tag">公園の象徴</p><h3>源義経・平知盛像</h3><p>八艘飛びを見せる義経と、碇を背負い海へ身を投じたと伝わる知盛。『平家物語』や後世の表現をもとに、義経の躍動と知盛の最期を象徴する場面を造形しています。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/mimosuso-stele-720.jpg" alt="みもすそ川公園の石碑と松" loading="lazy" /><span class="content-card__number">02</span></div><div class="content-card__body"><p class="content-card__tag">決戦の海を示す</p><h3>壇ノ浦古戦場碑</h3><p>碑の向こうに広がる海こそ、源平最後の戦いの舞台。説明を読んだら、海面の広がりと門司側の岸まで目で追ってみてください。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/choshu-cannons-720.jpg" alt="公園に並ぶ五門の長州砲" loading="lazy" /><span class="content-card__number">03</span></div><div class="content-card__body"><p class="content-card__tag">幕末の転換点</p><h3>五門の長州砲</h3><p>海峡に向かって並ぶ原寸大のレプリカ。壇ノ浦から約七百年後、同じ海峡で長州藩と外国艦隊が向き合ったことを伝えます。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/hero-statues-720.jpg" alt="公園から望む関門橋" loading="lazy" /><span class="content-card__number">04</span></div><div class="content-card__body"><p class="content-card__tag">現代の海峡</p><h3>関門橋</h3><p>頭上を横切る全長1,068mの吊り橋。公園からは橋桁の構造と、海峡をまたぐ大きさを真下に近い角度で眺められます。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/mimosuso-bridge-720.jpg" alt="園内にある小さな赤いみもすそ川橋" loading="lazy" /><span class="content-card__number">05</span></div><div class="content-card__body"><p class="content-card__tag">地名の記憶</p><h3>みもすそ川橋</h3><p>園内の小さな赤い橋は、御裳川の名を今に伝えます。大きな関門橋との対比も、写真に残したい構図です。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/strait-wide.jpg" alt="みもすそ川公園前の関門海峡" loading="lazy" /><span class="content-card__number">06</span></div><div class="content-card__body"><p class="content-card__tag">海の道</p><h3>早鞆ノ瀬戸の潮流</h3><p>関門海峡でも特に狭い水路。潮は一日のうちに向きと速さを変えます。水面にできる筋や渦、航路を進む船に注目してください。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/mimosuso-stele-720.jpg" alt="松のそばに立つ御裳川碑" loading="lazy" /><span class="content-card__number">07</span></div><div class="content-card__body"><p class="content-card__tag">歌と伝承</p><h3>二位尼の歌碑・御裳川碑</h3><p>安徳天皇とともに入水した二位尼の物語と、地名の由来を伝える碑。史実、物語、土地の伝承が重なる場所です。</p></div></article>
+        <article class="content-card" data-reveal><div class="content-card__image"><img src="/images/tunnel-building-720.jpg" alt="関門トンネル人道下関側入口" loading="lazy" /><span class="content-card__number">08</span></div><div class="content-card__body"><p class="content-card__tag">次の一歩</p><h3>関門トンネル人道入口</h3><p>公園から歩いてすぐの関門プラザから、エレベーターで海底へ。公園散策を本州から九州への小さな旅へ広げられます。</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell feature-row">
+      <div class="feature-row__image" data-reveal><img src="/images/choshu-cannons-720.jpg" alt="海峡へ向く長州砲" loading="lazy" /></div>
+      <div class="feature-row__copy" data-reveal>
+        <p class="kicker">音で感じる歴史</p>
+        <h2>紙芝居と、<br />長州砲の演出。</h2>
+        <p>園内では、壇ノ浦や幕末の歴史を伝える紙芝居が通常行われています。長州砲は中央の一門で発射音と煙の演出を体験できます。いずれも天候や運営状況により変更されることがあるため、当日の案内をご確認ください。</p>
+        <div class="notice"><span>注</span><div>紙芝居は通常10時から15時の間に実施され、火曜・木曜は当面休演と案内されています。長州砲は通常9時から17時の毎正時に演出があります。最新情報は公式観光サイトでご確認ください。</div></div>
+        <a class="text-link" href="https://yamaguchi-tourism.jp/spot/detail_15266.html" target="_blank" rel="noopener">公園の最新案内を見る <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--bronze">
+    <div class="shell">
+      <SectionHeading eyebrow="おすすめの順路" title="30分で、公園の核心へ。" lead="御裳川バス停から像、碑、砲、海峡へ。帰り道に関門橋を見上げる、短くても密度のある一周です。" inverse />
+      <ol class="route-path" style="color:white">
+        <li style="color:white">御裳川バス停</li><li style="color:white">義経・知盛像</li><li style="color:white">古戦場碑</li><li style="color:white">長州砲</li><li style="color:white">海峡プロムナード</li><li style="color:white">関門橋</li>
+      </ol>
+      <a class="button button--light" href="/itineraries/">時間別のコースを見る <span class="button__icon" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Layout>

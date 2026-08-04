@@ -1,0 +1,56 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<Layout title="関門海峡モデルコース" description="30分、90分、3時間、半日、一日から選べる、みもすそ川公園と関門トンネル人道、唐戸市場、赤間神宮、門司港のモデルコース。">
+  <PageHero eyebrow="時間で選ぶ旅" title="三十分から、一日まで。" lead="公園だけを濃く見るか、海底を越えるか、唐戸と門司港までつなぐか。使える時間から、関門海峡の歩き方を選べます。" image="/images/moji-port.jpg" imageAlt="門司港中心部と関門海峡を望む風景" position="center" />
+
+  <section class="section">
+    <div class="shell page-intro">
+      <h2 data-reveal>時間が決まれば、<br />旅の輪郭が見える。</h2>
+      <div class="page-intro__copy" data-reveal>
+        <p>みもすそ川公園は短い時間でも楽しめますが、関門トンネル人道、赤間神宮、唐戸市場、門司港を組み合わせると、歴史・景色・食がつながる一日になります。</p>
+        <p>以下の時間は、写真や短い休憩を含む目安です。バスの待ち時間、市場の混雑、子ども連れの場合は余裕を足してください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="四つの基本コース" title="いまの旅に、ちょうどいい長さ。" />
+      <div class="route-stack">
+        <article class="route-card" id="thirty-minutes" data-reveal><div class="route-card__intro"><span class="route-card__time">30〜45分</span><h3>みもすそ川公園<br />核心コース</h3></div><div class="route-card__body"><p>乗り継ぎやドライブの途中に。像、古戦場碑、長州砲、関門橋を一周し、二つの戦いを短時間でつなぎます。</p><ol class="route-path"><li>御裳川バス停</li><li>義経・知盛像</li><li>古戦場碑</li><li>長州砲</li><li>関門橋</li></ol><div class="route-card__meta"><span>歴史</span><span>写真</span><span>初めての人</span><span>園内中心</span></div></div></article>
+        <article class="route-card" id="ninety-minutes" data-reveal><div class="route-card__intro"><span class="route-card__time">約90分</span><h3>海底県境<br />往復コース</h3></div><div class="route-card__body"><p>公園を見たあと、人道へ。山口県と福岡県の県境で写真を撮り、下関側へ戻ります。短い時間で「海底を歩く」を加えられます。</p><ol class="route-path"><li>公園</li><li>関門プラザ</li><li>人道入口</li><li>海底県境</li><li>下関側へ戻る</li></ol><div class="route-card__meta"><span>海底散歩</span><span>県境</span><span>往復約2.2km</span></div></div></article>
+        <article class="route-card" id="three-hours" data-reveal><div class="route-card__intro"><span class="route-card__time">約3時間</span><h3>本州から九州へ<br />歩くコース</h3></div><div class="route-card__body"><p>人道を渡り切り、和布刈神社と門司側の海辺へ。二つの岸から関門橋を眺める、海峡らしさが最も濃いコースです。</p><ol class="route-path"><li>公園</li><li>海底県境</li><li>門司側出口</li><li>和布刈神社</li><li>海辺散歩</li></ol><div class="route-card__meta"><span>本州から九州</span><span>関門橋</span><span>片道横断</span></div></div></article>
+        <article class="route-card" id="halfday" data-reveal><div class="route-card__intro"><span class="route-card__time">半日</span><h3>壇ノ浦の物語<br />下関コース</h3></div><div class="route-card__body"><p>唐戸で食を楽しみ、安徳天皇を祀る赤間神宮から決戦の海へ。壇ノ浦の物語を下関側で丁寧につなぎます。</p><ol class="route-path"><li>唐戸市場</li><li>赤間神宮</li><li>バス移動</li><li>公園</li><li>人道</li></ol><div class="route-card__meta"><span>歴史</span><span>海鮮</span><span>バス利用</span><span>半日観光</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="shell feature-row feature-row--reverse">
+      <div class="feature-row__image" data-reveal><img src="/images/mojiko-retro-720.jpg" alt="門司港レトロの水辺" loading="lazy" /></div>
+      <div class="feature-row__copy" data-reveal>
+        <p class="kicker" style="color:#b8cfc6">車なしで一日</p>
+        <h2 style="color:white">下関から門司港へ、<br />海峡を一周する。</h2>
+        <p style="color:rgba(255,255,255,.72)">下関駅から唐戸へ向かい、市場と赤間神宮を歩いたら、バスでみもすそ川公園へ。人道を渡って門司側へ抜け、門司港レトロまで旅を伸ばします。帰りは連絡船を使えば、海上から唐戸へ戻る輪ができます。</p>
+        <ol class="route-path"><li style="color:white">下関駅</li><li style="color:white">唐戸</li><li style="color:white">赤間神宮</li><li style="color:white">公園</li><li style="color:white">門司港</li><li style="color:white">連絡船</li></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="組み立てのコツ" title="旅を詰め込みすぎない。" />
+      <div class="scene-grid">
+        <article class="scene-card"><p class="scene-card__num">一</p><h3>市場は先に</h3><p>唐戸市場を目的にする日は、売り切れや混雑を考えて先に訪れ、公園を後半に置くと動きやすくなります。</p></article>
+        <article class="scene-card"><p class="scene-card__num">二</p><h3>海底は余裕を</h3><p>人道は片道約15分ですが、入口までの移動、エレベーター、撮影を含めると時間が増えます。</p></article>
+        <article class="scene-card"><p class="scene-card__num">三</p><h3>帰り方を先に決める</h3><p>門司側へ抜ける場合は、徒歩を続けるか、門司港から船や鉄道を使うかを先に決めておきます。</p></article>
+      </div>
+      <div class="notice" style="margin-top:26px"><span>注</span><div>バス、連絡船、市場の開催・営業時間は変わることがあります。利用日の最新情報をご確認ください。</div></div>
+      <div style="margin-top:30px"><a class="button button--primary" href="/access/">移動方法を確認する <span class="button__icon" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+</Layout>

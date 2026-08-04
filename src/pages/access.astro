@@ -1,0 +1,74 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<Layout title="アクセス・駐車場" description="みもすそ川公園へのアクセスを、下関駅、新下関駅、唐戸、門司側、自動車別に案内。御裳川バス停、駐車場、帰り方も紹介します。">
+  <PageHero eyebrow="海峡への行き方" title="御裳川で降りれば、海は目の前。" lead="下関駅からバス、唐戸と組み合わせてバス、下関インターチェンジから自動車。門司側からなら、海底を歩いて直接着けます。" image="/images/tunnel-building.jpg" imageAlt="みもすそ川公園近くの関門トンネル人道下関側入口" position="center" />
+
+  <section class="section">
+    <div class="shell page-intro">
+      <h2 data-reveal>バス停から公園まで、<br />迷う距離はありません。</h2>
+      <div class="page-intro__copy" data-reveal>
+        <p>最寄りは「御裳川（みもすそがわ）」バス停です。国道沿いで下車すると、公園と関門海峡がすぐそばに見えます。下関駅からの所要は交通状況により約12〜15分が目安です。</p>
+        <p>公園と関門トンネル人道入口は近いため、同じ目的地として計画できます。ただし駐車施設や帰りのバス停は位置を先に確認し、海峡を渡る場合は門司側からの帰路まで決めておくと安心です。</p>
+        <div class="page-intro__meta"><span>御裳川バス停すぐ</span><span>下関駅から約12〜15分</span><span>無料駐車場40台</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="出発地から選ぶ" title="四つの行き方。" lead="時刻表は固定せず、利用日に最新の運行情報を確認してください。" />
+      <div class="transport-grid">
+        <article class="transport-card" data-reveal><span class="transport-card__icon">駅</span><h3>下関駅から</h3><p class="transport-card__time">バスで約12〜15分</p><p>長府・唐戸方面へ向かう路線のうち「御裳川」を通る便を利用します。下車後、公園は海側のすぐそばです。</p><ul><li>行き先表示と御裳川経由を乗車前に確認</li><li>帰りの下関駅方面バス停も到着時に確認</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">新</span><h3>新下関駅から</h3><p class="transport-card__time">バス・鉄道を乗り継ぐ</p><p>新下関駅から路線バスを利用するか、下関駅・唐戸方面へ移動して御裳川行きへ乗り継ぎます。直通の有無は利用日の検索が確実です。</p><ul><li>新幹線到着時刻から逆算</li><li>荷物が大きい場合は乗り継ぎ時間に余裕を</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">唐</span><h3>唐戸から</h3><p class="transport-card__time">バスで御裳川方面へ</p><p>唐戸市場、カモンワーフ、赤間神宮を見たあと、国道沿いのバス停から御裳川方面へ。半日コースに最も組み込みやすい移動です。</p><ul><li>市場から赤間神宮は徒歩でつなげやすい</li><li>御裳川下車後は公園から人道へ</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">門</span><h3>門司側から</h3><p class="transport-card__time">人道を歩いて約15分</p><p>和布刈側の入口から関門トンネル人道へ。県境を越え、下関側のエレベーターを上がると公園のすぐ近くです。</p><ul><li>歩行者は人道を無料で通行</li><li>門司港中心部から入口までは別途移動</li></ul></article>
+      </div>
+      <div class="notice" style="margin-top:26px"><span>注</span><div>道路状況、ダイヤ改正、運休により移動時間は変わります。利用日の時刻表をサンデン交通などでご確認ください。</div></div>
+      <div style="margin-top:28px"><a class="button button--primary" href="https://www.sandenkotsu.co.jp/" target="_blank" rel="noopener">最新のバス情報を見る <span class="button__icon" aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="両岸の位置関係" title="下関と門司を、海底で結ぶ。" />
+      <div class="schematic-map" role="img" aria-label="下関駅、唐戸、みもすそ川公園、和布刈、門司港の位置関係を示す簡略図" data-reveal>
+        <div class="schematic-map__shore schematic-map__shore--left"></div><div class="schematic-map__shore schematic-map__shore--right"></div><div class="schematic-map__route"></div>
+        <span class="schematic-map__water-label">関門海峡</span>
+        <span class="schematic-map__point schematic-map__point--station"><i>1</i>下関駅</span>
+        <span class="schematic-map__point schematic-map__point--karato"><i>2</i>唐戸</span>
+        <span class="schematic-map__point schematic-map__point--park"><i>3</i>公園</span>
+        <span class="schematic-map__point schematic-map__point--mekari"><i>4</i>和布刈</span>
+        <span class="schematic-map__point schematic-map__point--moji"><i>5</i>門司港</span>
+      </div>
+      <p style="color:var(--ink-soft);font-size:.68rem;margin-top:12px">※位置関係を示す簡略図です。距離や縮尺は実際と異なります。</p>
+    </div>
+  </section>
+
+  <section class="section section--white" id="parking">
+    <div class="shell parking-layout">
+      <div data-reveal><p class="kicker">自動車で訪れる</p><h2>公園と人道に便利な、<br />無料駐車場。</h2><p style="color:var(--ink-soft);line-height:2.1">関門トンネル人道下関側入口の無料駐車場から、公園と人道を続けて歩けます。国道沿いは交通量が多いため、指定区画を利用し、路上での停車は避けてください。</p></div>
+      <div class="parking-options" data-reveal>
+        <article class="parking-option"><h3>無料・一般車40台</h3><p>一般車は40台を収容できます。公園を見たあと、そのまま人道入口へ向かう計画にも便利です。</p></article>
+        <article class="parking-option"><h3>大型バス1台</h3><p>大型バスは1台分です。団体で訪れる場合は、混雑や利用条件を含めて事前に確認してください。</p></article>
+        <article class="parking-option"><h3>多機能トイレ・エレベーター</h3><p>関門トンネル人道下関側入口には多機能トイレとエレベーターがあります。</p></article>
+        <div class="notice"><span>注</span><div>満車時は周辺道路で待たず、唐戸方面の駐車場と路線バスを組み合わせる方法も検討してください。</div></div>
+        <a class="text-link" href="https://yamaguchi-tourism.jp/spot/detail_10471.html" target="_blank" rel="noopener">駐車場と設備の公式案内を見る <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="shell">
+      <SectionHeading eyebrow="帰り方までがルート" title="門司へ抜けたら、どう戻る？" inverse />
+      <div class="scene-grid">
+        <article class="scene-card"><p class="scene-card__num">一</p><h3>人道を往復</h3><p>最も分かりやすい方法。県境や門司側の景色を楽しみ、同じ道で公園へ戻ります。</p></article>
+        <article class="scene-card"><p class="scene-card__num">二</p><h3>門司港へ歩く</h3><p>和布刈から門司港方面へ海沿いを進み、レトロ地区や駅から次の目的地へ。</p></article>
+        <article class="scene-card"><p class="scene-card__num">三</p><h3>連絡船で唐戸へ</h3><p>門司港から連絡船に乗れば、海上から関門海峡を眺めながら唐戸へ戻る輪ができます。</p></article>
+      </div>
+    </div>
+  </section>
+</Layout>

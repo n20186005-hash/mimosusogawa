@@ -1,0 +1,81 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<Layout title="壇ノ浦と長州砲の歴史" description="1185年の壇ノ浦の戦いと、1863〜1864年の攘夷戦・下関戦争を、みもすそ川公園で見える景色とともに紹介します。">
+  <PageHero eyebrow="海峡の歴史" title="潮の上で、時代が変わった。" lead="源氏と平家の最終決戦。長州藩と外国艦隊の衝突。関門海峡は、二度、日本の針路が大きく変わる場所になりました。" image="/images/hero-statues.jpg" imageAlt="壇ノ浦を望む源義経・平知盛像と関門橋" position="center 55%" />
+
+  <section class="section">
+    <div class="shell page-intro">
+      <h2 data-reveal>目の前の海を、<br />物語の舞台として見る。</h2>
+      <div class="page-intro__copy" data-reveal>
+        <p>像や砲台を先に見ると、歴史は展示物の中に閉じて見えるかもしれません。けれど、少し海側へ立ち位置を変えると、舞台は一気に広がります。対岸までの近さ、速く変わる潮、狭い航路。ここで戦いが起きた理由は、地形そのものにも刻まれています。</p>
+        <p>このページでは、史料で確認できる事柄、『平家物語』が語る場面、土地に伝わる伝承を同じものとして扱いません。違いを知ることで、現地の像や碑が何を表現しているのか、より立体的に見えてきます。</p>
+        <div class="label-list"><span>史料で確認できること</span><span>『平家物語』の記述</span><span>土地の伝承</span><span>後世の表現</span><span>諸説あり</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" id="dannoura">
+    <div class="shell feature-row">
+      <div class="feature-row__image" data-reveal><img src="/images/statues-close-720.jpg" alt="壇ノ浦を背に向き合う源義経と平知盛の像" loading="lazy" /></div>
+      <div class="feature-row__copy" data-reveal>
+        <p class="kicker">一一八五・壇ノ浦</p>
+        <h2>源氏と平家、<br />最後の海戦。</h2>
+        <p>西へ退いた平家一門を源氏が追い、寿永四年、関門海峡で最終決戦を迎えます。幼い安徳天皇を擁する平家にとって、この戦いは一門の命運を決めるものでした。</p>
+        <p>『平家物語』は、敗色が濃くなるなか、二位尼が安徳天皇を抱いて海へ入った場面を描きます。公園の像は、義経の八艘飛びと、碇を背負った知盛の入水という、物語と後世の芸能に強く残った場面を表しています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <SectionHeading eyebrow="壇ノ浦をたどる" title="決戦までの流れ。" />
+      <ol class="timeline">
+        <li class="timeline__item" data-reveal><div class="timeline__year">一一八〇</div><div class="timeline__body"><span class="timeline__tag">史料で確認</span><h3>源平の争乱が始まる</h3><p>各地で源氏が挙兵し、平氏政権との戦いが広がります。戦況が変わるなか、平家は都を離れ、西国へ拠点を移していきました。</p></div></li>
+        <li class="timeline__item" data-reveal><div class="timeline__year">一一八四</div><div class="timeline__body"><span class="timeline__tag">史料で確認</span><h3>一ノ谷・屋島を経て西へ</h3><p>平家は一ノ谷、屋島で敗れ、瀬戸内海を西へ。関門海峡周辺に至り、最後の海戦へ向かいます。</p></div></li>
+        <li class="timeline__item" data-reveal><div class="timeline__year">一一八五</div><div class="timeline__body"><span class="timeline__tag">史料と軍記物語</span><h3>壇ノ浦の戦い</h3><p>源平両軍が海上で激突。戦いの経過には複数の見方がありますが、平家が敗れ、安徳天皇をはじめ多くの人々が海に入ったことが伝えられています。</p></div></li>
+        <li class="timeline__item" data-reveal><div class="timeline__year">その後</div><div class="timeline__body"><span class="timeline__tag">記憶と表現</span><h3>物語、芸能、土地の記憶へ</h3><p>壇ノ浦は『平家物語』、能、歌舞伎、絵画などで繰り返し表現されました。公園の像も、史実を再現するだけでなく、長く語り継がれた場面の記憶を形にしています。</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="shell feature-row feature-row--reverse">
+      <div class="feature-row__image" data-reveal><img src="/images/strait-wide.jpg" alt="狭い関門海峡を行き交う船" loading="lazy" /></div>
+      <div class="feature-row__copy" data-reveal>
+        <p class="kicker" style="color:#b8cfc6">潮流をどう見るか</p>
+        <h2 style="color:white">潮が勝敗を決めた、<br />だけではない。</h2>
+        <p style="color:rgba(255,255,255,.72)">「潮の向きが変わり、源氏が有利になった」という説明は広く知られています。一方で、近年の研究では当時の暦や潮汐、戦闘経過を再検討し、潮だけで勝敗を説明する見方に異論も示されています。</p>
+        <div class="source-note" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)"><h3 style="color:white">現地での見方</h3><p style="color:rgba(255,255,255,.68)">潮の変化を眺めながら、「ここでは船を操る技術、地理の知識、兵力や指揮がどう重なったのか」と想像してみる。単純な一つの答えに閉じないことが、古戦場を歩く面白さです。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="choshu">
+    <div class="shell feature-row">
+      <div class="feature-row__image" data-reveal><img src="/images/choshu-cannons-720.jpg" alt="関門海峡へ向けられた長州砲" loading="lazy" /></div>
+      <div class="feature-row__copy" data-reveal>
+        <p class="kicker">一八六三―六四・下関</p>
+        <h2>海峡に向けられた、<br />五門の砲。</h2>
+        <p>幕末、長州藩は攘夷の方針を掲げ、関門海峡を通る外国船を砲撃しました。翌年、英・仏・蘭・米の四国連合艦隊が下関へ来襲し、沿岸の砲台は大きな打撃を受けます。</p>
+        <p>敗戦は、長州藩が外国との力の差を直視し、攘夷から開国へと進路を変える契機の一つになりました。公園の砲は原寸大のレプリカですが、砲口の先には今も国際航路が続いています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="shell">
+      <SectionHeading eyebrow="同じ海峡、異なる時代" title="一一八五年から、現代まで。" align="center" />
+      <div class="fact-bar">
+        <div class="fact-bar__item"><strong>一一八五</strong><span>壇ノ浦の戦い</span></div>
+        <div class="fact-bar__item"><strong>一八六三―六四</strong><span>攘夷戦・下関戦争</span></div>
+        <div class="fact-bar__item"><strong>一九五八</strong><span>関門トンネル開通</span></div>
+        <div class="fact-bar__item"><strong>一九七三</strong><span>関門橋開通</span></div>
+      </div>
+      <div style="margin-top:48px;text-align:center"><a class="button button--primary" href="/park-guide/">現地の見どころへ <span class="button__icon" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,54 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  sizes?: string;
+  style?: string;
+}
+
+const imageDimensions: Record<string, [number, number]> = {
+  'akama-shrine.jpg': [2400, 1606],
+  'choshu-cannons.jpg': [2272, 1704],
+  'hero-statues.jpg': [2400, 1600],
+  'karato-market.jpg': [2400, 1600],
+  'karato-sushi.jpg': [2400, 1350],
+  'mimosuso-bridge.jpg': [1920, 1440],
+  'mimosuso-stele.jpg': [1920, 1440],
+  'moji-port.jpg': [1920, 1280],
+  'mojiko-retro.jpg': [1920, 1440],
+  'prefecture-border.jpg': [1477, 1108],
+  'statues-close.jpg': [2400, 1600],
+  'strait-wide.jpg': [640, 426],
+  'tunnel-building.jpg': [2400, 1600],
+  'tunnel-entrance.jpg': [1920, 1998],
+  'tunnel-interior.jpg': [1024, 768]
+};
+
+const {
+  src,
+  alt,
+  sizes = '(max-width: 720px) 100vw, (max-width: 1100px) 80vw, 1200px',
+  ...attributes
+} = Astro.props;
+const fileName = src.split('/').pop() ?? '';
+const [width, height] = imageDimensions[fileName] ?? [1200, 800];
+const stem = src.replace(/\.jpg$/i, '');
+const candidates = [];
+if (width >= 720) candidates.push(`${stem}-720.jpg 720w`);
+if (width >= 1440) candidates.push(`${stem}-1440.jpg 1440w`);
+candidates.push(`${src} ${width}w`);
+---
+
+<img
+  src={src}
+  srcset={candidates.join(', ')}
+  sizes={sizes}
+  width={width}
+  height={height}
+  alt={alt}
+  decoding="async"
+  {...attributes}
+/>
