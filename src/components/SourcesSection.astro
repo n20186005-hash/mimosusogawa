@@ -1,0 +1,66 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { attraction, reviewsSourceNote } from '@/data/attraction';
+
+const sources = [
+  {
+    label: '評価・口コミ',
+    detail: `評価 · 同步时间 ${attraction.reviewSyncMonth}`,
+    note: reviewsSourceNote,
+    href: attraction.mapsUrl,
+    linkText: 'Google マップで全体を確認'
+  },
+  {
+    label: '公式観光情報',
+    detail: '山口県公式観光サイト（おいでませ山口へ）',
+    note: '公園・史跡の基本情報と最新のイベント案内。',
+    href: attraction.govTourismUrl,
+    linkText: '山口県観光サイトを開く'
+  },
+  {
+    label: '下関市観光',
+    detail: '下関観光サイト（海峡出会い旅）',
+    note: '関門トンネル人道などの施設情報。',
+    href: 'https://shimonoseki-kgb.jp/spot/%E9%96%A2%E9%96%80%E3%83%88%E3%83%B3%E3%83%8D%E3%83%AB%E4%BA%BA%E9%81%93/',
+    linkText: '下関観光サイトを開く'
+  },
+  {
+    label: '公共交通',
+    detail: 'サンデン交通',
+    note: '路線バスの運行・時刻情報。',
+    href: 'https://www.sandenkotsu.co.jp/',
+    linkText: 'バス情報を開く'
+  },
+  {
+    label: '写真クレジット',
+    detail: '掲載写真の出典',
+    note: '観光宣伝用途の公式配布写真と、利用条件が明確な共有写真を使用。',
+    href: '/photo-spots/#credits',
+    linkText: '写真クレジットを見る'
+  }
+];
+---
+
+<section class="section section--white" id="sources" aria-labelledby="sources-title">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="出典と責任"
+      title="資料来源"
+      lead="本サイトは非営利の観光・史跡案内であり、情報の正確性に努めていますが、営業・交通・気象は変わりやすいため、出発前に各公式情報をご確認ください。"
+    />
+    <div class="source-list">
+      {sources.map((s) => (
+        <div class="source-item">
+          <div class="source-item__head">
+            <strong>{s.label}</strong>
+            <span>{s.detail}</span>
+          </div>
+          <p class="source-item__note">{s.note}</p>
+          <a href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+            {s.linkText} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

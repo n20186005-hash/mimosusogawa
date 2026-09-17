@@ -1,0 +1,385 @@
+/* 新增模块样式（评价 / 地图 / 天気 / 施設 / 季節 / 類型ルート / 出典） */
+
+.entity-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 30px 0 0;
+  padding: 18px 22px;
+  list-style: none;
+  color: var(--navy);
+  background: rgba(255, 253, 248, 0.7);
+  border-left: 2px solid var(--bronze);
+  font-family: var(--serif);
+  font-size: 0.82rem;
+}
+.entity-breadcrumb li[aria-hidden='true'] { color: var(--bronze); }
+.entity-breadcrumb li:not([aria-hidden='true']) strong { font-weight: 600; }
+
+/* 谷歌评价 */
+.reviews {
+  max-width: 760px;
+  padding: 38px 40px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.reviews__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.reviews__score {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.reviews__rating {
+  color: var(--navy);
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.reviews__stars { color: #e3a532; font-size: 1.2rem; letter-spacing: 2px; }
+.reviews__count { color: var(--ink-soft); font-size: 0.85rem; }
+.reviews__inline {
+  margin: 0;
+  max-width: 360px;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.8;
+}
+.reviews__inline a { color: var(--bronze); font-weight: 700; white-space: nowrap; }
+.reviews__copyright {
+  margin: 22px 0 26px;
+  padding: 14px 18px;
+  color: var(--ink-soft);
+  background: rgba(79, 113, 102, 0.07);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  line-height: 1.8;
+}
+
+/* 地図埋め込み */
+.map-embed {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.map-embed iframe { display: block; width: 100%; border: 0; }
+.map-embed__official {
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+.map-embed__official a { color: var(--bronze); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+/* 天気 */
+.weather {
+  padding: 34px 36px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.weather__current {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.weather__now { display: flex; gap: 12px; align-items: baseline; }
+.weather__icon { font-size: 2.4rem; line-height: 1; }
+.weather__temp { color: var(--navy); font-family: var(--serif); font-size: 2.8rem; font-weight: 600; line-height: 1; }
+.weather__temp small { font-size: 1rem; margin-left: 2px; }
+.weather__label { color: var(--ink-soft); font-size: 0.95rem; }
+.weather__meta { display: flex; gap: 28px; margin: 0; }
+.weather__meta div { display: flex; flex-direction: column; }
+.weather__meta dt { color: var(--ink-soft); font-size: 0.66rem; letter-spacing: 0.1em; }
+.weather__meta dd { margin: 2px 0 0; color: var(--navy); font-family: var(--serif); font-size: 1.1rem; }
+.weather__forecast {
+  display: grid;
+  margin: 24px 0 0;
+  padding: 0;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  list-style: none;
+}
+.weather__forecast li {
+  display: flex;
+  padding: 14px 8px;
+  gap: 4px;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(79, 113, 102, 0.06);
+  border-radius: var(--radius-sm);
+  font-size: 0.62rem;
+}
+.weather__day { color: var(--navy); font-weight: 700; font-family: var(--serif); }
+.weather__day-icon { font-size: 1.2rem; }
+.weather__day-label { color: var(--ink-soft); text-align: center; }
+.weather__day-temp { color: var(--ink); font-family: var(--serif); }
+.weather__day-pop { color: var(--bronze); font-weight: 700; }
+.weather__loading { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
+/* 天気アドバイス */
+.wx-risk { margin-top: 18px; padding: 18px 22px; background: var(--vermilion); color: #fff; border-radius: var(--radius-md); }
+.wx-risk h4 { margin: 0 0 10px; font-family: var(--serif); font-size: 0.95rem; color: #fff; }
+.wx-risk ul { margin: 0; padding: 0; list-style: none; }
+.wx-risk li { position: relative; padding-left: 1.5em; font-size: 0.74rem; line-height: 1.75; margin-bottom: 8px; }
+.wx-risk li::before { content: '⚠'; position: absolute; left: 0; }
+.wx-calm { margin-top: 18px; padding: 14px 20px; background: rgba(79, 113, 102, 0.1); border: 1px solid var(--line); border-radius: var(--radius-md); color: var(--ink-soft); font-size: 0.74rem; }
+.wx-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
+.wx-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 22px 24px; box-shadow: var(--shadow-sm); }
+.wx-card h4 { margin: 0 0 14px; color: var(--navy); font-family: var(--serif); font-size: 0.98rem; font-weight: 600; }
+.wx-card ul { margin: 0; padding: 0; list-style: none; }
+.wx-card li { position: relative; padding-left: 1.4em; color: var(--ink-soft); font-size: 0.74rem; line-height: 1.7; margin-bottom: 9px; }
+.wx-card li::before { content: '●'; position: absolute; left: 0; color: var(--bronze); font-size: 0.7em; top: 0.35em; }
+
+.weather__note {
+  margin: 22px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  line-height: 1.8;
+}
+
+/* 周辺施設 */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.service-card {
+  padding: 30px 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.service-card__icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 22px;
+  place-items: center;
+  color: var(--white);
+  background: var(--bronze);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 0.8rem;
+}
+.service-card h3 { margin-bottom: 12px; color: var(--navy); font-family: var(--serif); font-size: 1.15rem; font-weight: 600; letter-spacing: 0.05em; }
+.service-card p { margin: 0; color: var(--ink-soft); font-size: 0.76rem; line-height: 1.95; }
+
+/* 季節表 */
+.season-table {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--white);
+}
+.season-table__head,
+.season-table__row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.3fr 1.15fr 1.1fr 0.8fr;
+}
+.season-table__head {
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+.season-table__head span { padding: 16px 18px; font-weight: 700; }
+.season-table__row { border-top: 1px solid var(--line); }
+.season-table__row span { padding: 20px 18px; color: var(--ink-soft); font-size: 0.74rem; line-height: 1.85; }
+.season-table__name { color: var(--navy) !important; font-family: var(--serif); font-size: 0.9rem !important; font-weight: 600; }
+.season-table__stat { display: block; margin-bottom: 8px; color: var(--navy); font-family: var(--serif); font-weight: 700; font-size: 0.72rem; }
+.season-meter { color: var(--vermilion); letter-spacing: 2px; }
+.season-meter__off { color: rgba(23, 56, 76, 0.18); }
+.season-table__row small { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 0.66rem; }
+.season-foot { margin: 22px 0 0; color: var(--ink-soft); font-size: 0.7rem; line-height: 1.85; }
+
+/* 類型ルート */
+.group-routes { display: flex; flex-direction: column; gap: 22px; }
+.group-route {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: 0.36fr 1fr;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.group-route__intro {
+  display: flex;
+  min-height: 280px;
+  padding: 36px;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--white);
+  background: var(--bronze);
+}
+.group-route:nth-child(2) .group-route__intro { background: var(--navy); }
+.group-route:nth-child(3) .group-route__intro { background: var(--vermilion); }
+.group-route__tag { display: inline-flex; padding: 6px 12px; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.32); border-radius: 999px; font-size: 0.66rem; }
+.group-route__time { font-family: var(--serif); font-size: 1.8rem; }
+.group-route__intro h3 { margin: 0; font-family: var(--serif); font-size: 1.4rem; font-weight: 500; line-height: 1.55; }
+.group-route__body { padding: 36px 42px; }
+.group-route__body > p { color: var(--ink-soft); font-size: 0.82rem; line-height: 2; }
+.group-route__path { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; padding: 0; list-style: none; }
+.group-route__path li { display: inline-flex; padding: 7px 13px; color: var(--navy); background: rgba(79,113,102,.08); border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+.group-route__tips { display: flex; flex-wrap: wrap; gap: 8px; }
+.group-route__tips span { display: inline-flex; padding: 6px 11px; color: var(--bronze); border: 1px solid var(--line); border-radius: 999px; font-size: 0.64rem; font-weight: 700; }
+
+/* 定番ルート（半日/一日） */
+.routes2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.route2-card { padding: 34px 36px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.route2-card__head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+.route2-card__title { margin: 0; color: var(--navy); font-family: var(--serif); font-size: 1.25rem; font-weight: 600; letter-spacing: 0.05em; }
+.route2-card__time { flex: none; color: var(--bronze); font-weight: 700; font-size: 0.72rem; }
+.route2-card__body { margin: 0 0 22px; color: var(--ink-soft); font-size: 0.78rem; line-height: 1.95; }
+.route2-path { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
+.route2-path li { display: inline-flex; align-items: center; padding: 7px 13px; color: var(--navy); background: rgba(79,113,102,.08); border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+.route2-path li:not(:last-child)::after { content: '→'; color: var(--bronze); font-weight: 700; margin-left: 8px; }
+.route2-tips { display: flex; flex-wrap: wrap; gap: 8px; }
+.route2-tips span { display: inline-flex; padding: 6px 11px; color: var(--bronze); border: 1px solid var(--line); border-radius: 999px; font-size: 0.64rem; font-weight: 700; }
+
+/* 科学・責任 */
+.science-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.science-card { padding: 32px 30px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.science-card__icon { display: grid; width: 46px; height: 46px; margin-bottom: 20px; place-items: center; color: var(--white); background: var(--navy); border-radius: 50%; font-family: var(--serif); font-size: 0.9rem; }
+.science-card h3 { margin-bottom: 12px; color: var(--navy); font-family: var(--serif); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.04em; }
+.science-card p { margin: 0; color: var(--ink-soft); font-size: 0.76rem; line-height: 1.95; }
+.science-responsibility { margin-top: 24px; padding: 32px 34px; background: var(--navy); border-radius: var(--radius-md); }
+.science-responsibility__label { display: inline-block; margin-bottom: 20px; padding: 6px 14px; color: var(--white); background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 999px; font-size: 0.68rem; letter-spacing: 0.08em; }
+.resp-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.resp-item h4 { margin: 0 0 10px; color: #cfe0da; font-family: var(--serif); font-size: 1rem; font-weight: 600; }
+.resp-item p { margin: 0; color: rgba(255,255,255,.72); font-size: 0.74rem; line-height: 1.9; }
+
+/* 交通詳細ステップ */
+.transport-detail { margin-top: 30px; padding: 32px 34px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.transport-detail__title { margin: 0 0 20px; color: var(--navy); font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
+.transport-detail__steps { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.transport-detail__steps li { position: relative; padding-left: 46px; }
+.transport-detail__steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; display: grid; width: 32px; height: 32px; place-items: center; color: var(--white); background: var(--bronze); border-radius: 50%; font-family: var(--serif); font-size: 0.9rem; }
+.transport-detail__steps strong { display: block; color: var(--navy); font-size: 0.92rem; margin-bottom: 4px; }
+.transport-detail__steps span { color: var(--ink-soft); font-size: 0.76rem; line-height: 1.85; }
+
+/* 出典 */
+.source-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.source-item {
+  padding: 28px 30px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+.source-item__head { display: flex; flex-direction: column; gap: 4px; }
+.source-item__head strong { color: var(--navy); font-family: var(--serif); font-size: 1.05rem; }
+.source-item__head span { color: var(--bronze); font-size: 0.7rem; font-weight: 700; }
+.source-item__note { margin: 14px 0 16px; color: var(--ink-soft); font-size: 0.74rem; line-height: 1.9; }
+.source-item a { display: inline-flex; gap: 8px; align-items: center; color: var(--bronze); font-size: 0.74rem; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+/* 潮汐板块 */
+.tides-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.tides-col {
+  padding: 36px 38px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.tides-col__title {
+  margin-bottom: 24px;
+  color: var(--navy);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.tides-list { margin: 0; padding: 0; list-style: none; }
+.tides-list li { padding: 18px 0; border-top: 1px solid var(--line); }
+.tides-list li:first-child { padding-top: 0; border-top: 0; }
+.tides-list strong { display: block; margin-bottom: 7px; color: var(--bronze); font-size: 0.92rem; letter-spacing: 0.02em; }
+.tides-list p { margin: 0; color: var(--ink-soft); font-size: 0.78rem; line-height: 1.95; }
+
+.tides-glossary { margin-top: 26px; padding-top: 22px; border-top: 1px dashed var(--line); }
+.tides-glossary__label { display: block; margin-bottom: 12px; color: var(--ink-soft); font-size: 0.66rem; letter-spacing: 0.14em; }
+.tides-glossary ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tides-glossary li { display: inline-flex; gap: 6px; align-items: baseline; padding: 6px 11px; background: rgba(79, 113, 102, 0.08); border-radius: 999px; font-size: 0.66rem; }
+.tides-glossary li b { color: var(--navy); font-weight: 700; }
+.tides-glossary li span { color: var(--ink-soft); }
+
+.tides-tips { display: flex; flex-direction: column; gap: 18px; }
+.tides-tip { display: flex; gap: 16px; align-items: flex-start; }
+.tides-tip__icon {
+  flex: none;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  color: var(--white);
+  background: var(--vermilion);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 0.8rem;
+}
+.tides-tip strong { display: block; margin-bottom: 5px; color: var(--navy); font-size: 0.95rem; }
+.tides-tip p { margin: 0; color: var(--ink-soft); font-size: 0.76rem; line-height: 1.9; }
+
+.tides-source { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--line); }
+.tides-source__note { margin: 0 0 18px; color: var(--ink-soft); font-size: 0.72rem; line-height: 1.9; }
+.tides-source__safety {
+  margin: 16px 0 0;
+  padding: 12px 16px;
+  color: var(--ink-soft);
+  background: rgba(164, 66, 53, 0.06);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  line-height: 1.8;
+}
+
+/* レスポンシブ */
+@media (max-width: 1120px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .weather__forecast { grid-template-columns: repeat(4, 1fr); }
+  .weather__forecast li:last-child:nth-child(odd) { grid-column: span 1; }
+  .routes2 { grid-template-columns: 1fr; }
+  .science-grid { grid-template-columns: repeat(2, 1fr); }
+  .resp-items { grid-template-columns: 1fr; }
+}
+@media (max-width: 980px) {
+  .tides-grid { grid-template-columns: 1fr; }
+  .season-table__head { display: none; }
+  .season-table__row {
+    grid-template-columns: 1fr;
+    padding: 8px 0 18px;
+  }
+  .season-table__row span { padding: 6px 18px; }
+  .season-table__name { font-size: 1.05rem !important; padding-top: 18px !important; }
+  .group-route { grid-template-columns: 1fr; }
+  .group-route__intro { min-height: auto; padding: 26px 32px; flex-direction: row; gap: 18px; align-items: center; }
+  .source-list { grid-template-columns: 1fr; }
+  .science-grid { grid-template-columns: 1fr; }
+  .wx-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .reviews { padding: 28px 24px; }
+  .weather { padding: 26px 22px; }
+  .weather__forecast { grid-template-columns: repeat(3, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .weather__current { gap: 16px; }
+}

@@ -1,12 +1,29 @@
+# 依赖与构建产物（无需上传 / 提交）
 node_modules/
+.astro/
 dist/
-.env
 *.local
+.env
+.env.*
+!.env.example
+
+# 编辑器 / OS
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db
+
+# 日志
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
 *.log
-apps/web/src/routeTree.gen.ts
-releases/
 
+# 构建缓存
+*.tsbuildinfo
+.cache/
 
-.astro
+# Cloudflare 部署临时文件
 .wrangler/
+.dev.vars
+.dev.vars*

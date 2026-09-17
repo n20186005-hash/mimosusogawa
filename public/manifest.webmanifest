@@ -1,0 +1,16 @@
+{
+  "name": "みもすそ川公園｜壇ノ浦と関門海峡を歩く",
+  "short_name": "御裳川公園",
+  "description": "壇ノ浦古戦場、長州砲、関門トンネル人道を一つの旅として紹介する、非営利の観光・史跡ガイド。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f0e7",
+  "theme_color": "#17384c",
+  "lang": "ja",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icons/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

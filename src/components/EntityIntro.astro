@@ -1,0 +1,38 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { attraction } from '@/data/attraction';
+---
+
+<section class="section washi-texture" id="about" aria-labelledby="about-title">
+  <div class="shell intro-grid">
+    <div class="intro-grid__title" data-reveal>
+      <p class="kicker">みもすそ川公園（下関市）について</p>
+      <h2>一つの海峡、<br /><em>二つ</em>の戦い、<br />三つの体験。</h2>
+    </div>
+    <div class="intro-grid__copy" data-reveal>
+      <p>
+        <strong>みもすそ川公園</strong>は、<strong>御裳川（みもすそがわ）</strong>とも呼ばれ、山口県<strong>下関市</strong>の関門海峡に面した史跡公園です。源義経・平知盛の像、壇ノ浦古戦場碑、長州砲のレプリカが並び、その先には関門橋が架かります。
+      </p>
+      <p>
+        公園は無料で開放された公共空間であり、散策を通じて壇ノ浦の合戦と幕末の海峡の歴史をたどることができます。歩けば本州から海底の人道を抜けて九州へ渡る出発点にもなっています。
+      </p>
+      <nav class="entity-breadcrumb" aria-label="所在地の階層">
+        <ol>
+          <li>{attraction.fullName}</li>
+          <li aria-hidden="true">→</li>
+          <li>{attraction.city}</li>
+          <li aria-hidden="true">→</li>
+          <li>{attraction.state}</li>
+          <li aria-hidden="true">→</li>
+          <li>{attraction.country}</li>
+        </ol>
+      </nav>
+      <blockquote class="intro-grid__quote">
+        <span aria-hidden="true">潮</span>
+        <p>
+          みもすそ川公園を訪れると、すぐ近くに<strong>{attraction.nearbyLandmarks[0]}</strong>や<strong>{attraction.nearbyLandmarks[1]}</strong>といった海峡を象徴する史跡と風景があり、公園単体でも、周辺と組み合わせても物語が広がります。
+        </p>
+      </blockquote>
+    </div>
+  </div>
+</section>

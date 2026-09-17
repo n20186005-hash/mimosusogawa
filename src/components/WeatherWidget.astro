@@ -1,0 +1,289 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { attraction } from '@/data/attraction';
+
+// サーバー側（ビルド時）で気象・海洋・警報を取得し、HTML へ出力する。
+// 取得結果はモジュール内でキャッシュし、同一ビルド内の再取得を抑える。
+// 取得に失敗してもビルドは止めず、代替文言を出す。
+const wmo: Record<number, { label: string; icon: string }> = {
+  0: { label: '晴れ', icon: '☀' },
+  1: { label: '大体晴れ', icon: '🌤' },
+  2: { label: '一部曇り', icon: '⛅' },
+  3: { label: '曇り', icon: '☁' },
+  45: { label: '霧', icon: '🌫' },
+  48: { label: '霧氷', icon: '🌫' },
+  51: { label: '弱い霧雨', icon: '🌦' },
+  53: { label: '霧雨', icon: '🌦' },
+  55: { label: '強い霧雨', icon: '🌧' },
+  61: { label: '弱い雨', icon: '🌧' },
+  63: { label: '雨', icon: '🌧' },
+  65: { label: '強い雨', icon: '🌧' },
+  71: { label: '弱い雪', icon: '🌨' },
+  73: { label: '雪', icon: '🌨' },
+  75: { label: '強い雪', icon: '❄' },
+  80: { label: 'にわか雨', icon: '🌦' },
+  81: { label: 'にわか雨', icon: '🌧' },
+  82: { label: '激しいにわか雨', icon: '⛈' },
+  95: { label: '雷雨', icon: '⛈' },
+  96: { label: '雷雨と雹', icon: '⛈' },
+  99: { label: '激しい雷雨と雹', icon: '⛈' }
+};
+const describe = (code: number) => wmo[code] ?? { label: 'その他', icon: '🌡' };
+const RAIN = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82];
+const THUNDER = [95, 96, 99];
+const FOG = [45, 48];
+const CLEAR = [0, 1];
+const CLOUDY = [2, 3];
+
+const isRain = (c: number) => RAIN.includes(c);
+const isThunder = (c: number) => THUNDER.includes(c);
+const isFog = (c: number) => FOG.includes(c);
+const isClear = (c: number) => CLEAR.includes(c);
+const isCloudy = (c: number) => CLOUDY.includes(c);
+
+// 風速(m/s) → 風力（Beaufort）階級
+function beaufort(ms: number): number {
+  const t = [0.3, 1.6, 3.4, 5.5, 8.0, 10.8, 13.9, 17.2, 20.8, 24.5, 28.5, 32.7];
+  let lvl = 0;
+  for (let i = 0; i < t.length; i++) if (ms >= t[i]) lvl = i + 1;
+  return lvl;
+}
+
+type Wx = {
+  observedAt: string;
+  current: { temp: number; code: number; wind: number; gust: number; humidity: number; uv: number | null; wave: number | null; seaTemp: number | null };
+  today: { tmax: number; tmin: number; pop: number | null; precipSum: number | null; uvMax: number | null; windMax: number; waveMax: number | null };
+  daily: Array<{ date: string; code: number; tmax: number; tmin: number; pop: number | null }>;
+  alerts: string[];
+};
+
+const cache = new Map<string, Wx | null>();
+
+async function fetchJSON(url: string): Promise<any> {
+  const res = await fetch(url, { headers: { 'User-Agent': 'mimosusogawa-guide/1.0' } });
+  if (!res.ok) throw new Error('http ' + res.status);
+  return res.json();
+}
+
+async function getWeather(lat: number, lon: number): Promise<Wx | null> {
+  const key = `${lat},${lon}`;
+  if (cache.has(key)) return cache.get(key)!;
+  const forecastUrl =
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+    `&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,wind_gusts_10m,uv_index` +
+    `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,uv_index_max,wind_speed_10m_max` +
+    `&wind_speed_unit=ms&timezone=Asia%2FTokyo&forecast_days=7`;
+  const marineUrl =
+    `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lon}` +
+    `&current=wave_height,sea_surface_temperature&daily=wave_height_max&timezone=Asia%2FTokyo&forecast_days=7`;
+  const alertsUrl = `https://api.open-meteo.com/v1/alerts?latitude=${lat}&longitude=${lon}`;
+
+  const [fR, mR, aR] = await Promise.allSettled([fetchJSON(forecastUrl), fetchJSON(marineUrl), fetchJSON(alertsUrl)]);
+  if (fR.status !== 'fulfilled' || !fR.value?.current) {
+    cache.set(key, null);
+    return null;
+  }
+  const f = fR.value;
+  const d = f.daily;
+  const wx: Wx = {
+    observedAt: f.current.time ?? '',
+    current: {
+      temp: f.current.temperature_2m,
+      code: f.current.weather_code,
+      wind: f.current.wind_speed_10m,
+      gust: f.current.wind_gusts_10m,
+      humidity: f.current.relative_humidity_2m,
+      uv: f.current.uv_index ?? null,
+      wave: mR.status === 'fulfilled' ? (mR.value?.current?.wave_height ?? null) : null,
+      seaTemp: mR.status === 'fulfilled' ? (mR.value?.current?.sea_surface_temperature ?? null) : null
+    },
+    today: {
+      tmax: d.temperature_2m_max?.[0],
+      tmin: d.temperature_2m_min?.[0],
+      pop: d.precipitation_probability_max?.[0] ?? null,
+      precipSum: d.precipitation_sum?.[0] ?? null,
+      uvMax: d.uv_index_max?.[0] ?? null,
+      windMax: d.wind_speed_10m_max?.[0] ?? f.current.wind_speed_10m,
+      waveMax: mR.status === 'fulfilled' ? (mR.value?.daily?.wave_height_max?.[0] ?? null) : null
+    },
+    daily: (d.time as string[]).map((date: string, i: number) => ({
+      date,
+      code: d.weather_code[i],
+      tmax: d.temperature_2m_max[i],
+      tmin: d.temperature_2m_min[i],
+      pop: d.precipitation_probability_max?.[i] ?? null
+    })),
+    alerts:
+      aR.status === 'fulfilled' && Array.isArray(aR.value?.features)
+        ? aR.value.features.slice(0, 4).map((feat: any) => {
+            const p = feat?.properties || {};
+            return (p.event || p.headline || '気象警報') + (p.areaDesc ? `（${p.areaDesc}）` : '');
+          })
+        : []
+  };
+  cache.set(key, wx);
+  return wx;
+}
+
+// 天気データから「実行可能な助言」を組み立てる（条件に合うものだけ表示）
+function buildAdvice(wx: Wx) {
+  const { current: c, today: t, alerts } = wx;
+  const b = beaufort(c.wind);
+  const rain = isRain(c.code);
+  const heavyRain = [65, 66, 67, 82].includes(c.code) || (t.precipSum != null && t.precipSum >= 20);
+  const thunder = isThunder(c.code);
+  const fog = isFog(c.code);
+  const clear = isClear(c.code);
+  const cloudy = isCloudy(c.code);
+  const windy = b >= 5;
+  const strong = b >= 7;
+  const highWave = (c.wave != null && c.wave >= 1.2) || (t.waveMax != null && t.waveMax >= 1.5);
+
+  const clothing: string[] = [];
+  const play: string[] = [];
+  const items: string[] = [];
+  const risk: string[] = [];
+
+  if (alerts.length) {
+    alerts.slice(0, 3).forEach((a) =>
+      risk.push(`【気象警報】${a} が発表されています。海峡や海辺は危険なので、磯・防波堤・人道の岸辺への立ち入りを控え、最新の気象情報をご確認ください。`)
+    );
+  }
+  if (strong) risk.push('風が強い（強風）ので、磯や礁石、広告物の近くには寄らず、波打ち際から離れてください。');
+  if (heavyRain) risk.push('雨が強く降っています。低地や海岸の荒れ、急な増水にご注意を。磯への立ち入りは避けてください。');
+  if (thunder) risk.push('雷に注意。磯や海中、高所、木の下での避難は避けてください。');
+  if (t.waveMax != null && t.waveMax >= 2.5) risk.push(`波が高くなっています（最大${Math.round(t.waveMax * 10) / 10}m）。磯への立ち入りは危険です。`);
+
+  if (t.tmax != null && t.tmax >= 32) clothing.push('気温が高めです。正午の外出を避け、軽く通気性のよい服装で無理なく動いてください。');
+  if (t.tmax != null && t.tmax <= 10) clothing.push('気温が低いので、厚手の上着やマフラーなどでしっかり防寒してください。');
+  if (t.tmax != null && t.tmin != null && t.tmax - t.tmin > 8) clothing.push('朝と夜の寒暖差が大きいので、羽織れる上着があると便利です。');
+  if (windy) clothing.push('風がやや強いので、帽子が飛びやすく、ゆったりした長い服は避けたほうがよいでしょう。');
+  if (rain) clothing.push('雨に対応できる服装（レインウェアなど）でお出かけください。');
+  if (c.uv != null && c.uv >= 5) clothing.push('日差しが強いので、肌を覆う軽い長袖や帽子で日よけを。');
+  if (!clothing.length) clothing.push('過ごしやすい服装でお出かけください。');
+
+  if (clear) play.push('晴れなら海峡の見通しがよく、関門橋と像の写真におすすめです。');
+  if (cloudy) play.push('光が柔らかく、長時間の散策や撮影に向いています。');
+  if (t.pop != null && t.pop >= 60) play.push('雨の可能性が高いので、室内（市場や資料展示など）を組み込み、磯や岩場の散策は控えましょう。');
+  else if (rain && !heavyRain) play.push('小雨のため路面が滑りやすく、磯や岩場には近づかないようご注意を。');
+  if (heavyRain) play.push('雨が強いため、海上や磯の遊びは避け、室内優先で。遊覧船などは運休の可能性があります。');
+  if (thunder) play.push('雷が予想されるため、海上や磯、木の下での活動は避けてください。');
+  if (b >= 5 && !strong) play.push('海峡の遊覧船や露天空のプログラムが風で運休することがあります。');
+  if (strong) play.push('強風で海上のプログラムはほぼ運休の見込み。岸から安全な場所で海峡を眺めるだけにとどめてください。');
+  if (fog) play.push('霧で海峡の見通しが悪く、海や山の景観は望めません。室内や近くの史跡めぐりがよいでしょう。');
+  if (highWave) play.push('波が高めです。磯には絶対に降りず、岸から観察してください。');
+  play.push('潮の満ち引きは早いので、磯や岩場には立ち入らず、岸から観察しましょう（正確な時刻は気象庁の潮位表で）。');
+
+  if ((t.pop != null && t.pop >= 60) || rain) items.push('雨具（折りたたみ傘・レインウェア）');
+  if (heavyRain) items.push('レインウェア（長い傘は風で返るので非推奨）');
+  if ((t.tmax != null && t.tmax >= 32) || (c.uv != null && c.uv >= 5)) {
+    items.push('日焼け止め', 'サングラス', '帽子', '十分な飲み物');
+  }
+  if (t.tmax != null && t.tmax <= 10) items.push('厚手の上着', 'マフラー');
+  if (fog) items.push('マスク');
+  if (strong) items.push('飛ばされやすい小物に注意');
+  if (!items.length) items.push('飲み物');
+
+  return { clothing, play, items, risk };
+}
+
+const wx = await getWeather(attraction.latitude, attraction.longitude);
+const advice = wx ? buildAdvice(wx) : null;
+
+const fmtObserved = (iso: string) => {
+  if (!iso) return '';
+  const d = new Date(iso.replace(' ', 'T') + '+09:00');
+  if (isNaN(d.getTime())) return '';
+  return `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+};
+const fmtDay = (iso: string) => {
+  const d = new Date(iso + 'T00:00:00+09:00');
+  const wd = ['日', '月', '火', '水', '木', '金', '土'][d.getDay()];
+  return `${d.getMonth() + 1}/${d.getDate()}(${wd})`;
+};
+---
+
+<section class="section section--white" id="weather" aria-labelledby="weather-title">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="旅の前に"
+      title="みもすそ川公園の天気と潮風"
+      lead="海峡の風は変わりやすいため、出かける前に眼下の空模様を確かめましょう。天気に応じた「今日の過ごし方」もまとめています。"
+    />
+    <div class="weather">
+      {
+        wx && advice ? (
+          <>
+            <div class="weather__current">
+              <div class="weather__now">
+                <span class="weather__icon" aria-hidden="true">{describe(wx.current.code).icon}</span>
+                <span class="weather__temp">{Math.round(wx.current.temp)}<small>℃</small></span>
+                <span class="weather__label">{describe(wx.current.code).label}</span>
+              </div>
+              <dl class="weather__meta">
+                <div><dt>風速</dt><dd>{Math.round(wx.current.wind)} m/s<small>（風力{beaufort(wx.current.wind)}）</small></dd></div>
+                <div><dt>湿度</dt><dd>{Math.round(wx.current.humidity)} %</dd></div>
+                <div><dt>紫外線</dt><dd>{wx.current.uv != null ? Math.round(wx.current.uv) : '—'}</dd></div>
+                <div><dt>波の高さ</dt><dd>{wx.current.wave != null ? `${Math.round(wx.current.wave * 10) / 10} m` : '—'}</dd></div>
+                <div><dt>海水温</dt><dd>{wx.current.seaTemp != null ? `${Math.round(wx.current.seaTemp)}℃` : '—'}</dd></div>
+                <div><dt>降水確率</dt><dd>{wx.today.pop != null ? `${Math.round(wx.today.pop)}%` : '—'}</dd></div>
+              </dl>
+            </div>
+
+            {advice.risk.length ? (
+              <div class="wx-risk" role="alert">
+                <h4>注意・警報</h4>
+                <ul>{advice.risk.map((r) => <li>{r}</li>)}</ul>
+              </div>
+            ) : (
+              <p class="wx-calm">現在、特記すべき警報・注意報は確認されていません。最新の情報は気象庁でご確認ください。</p>
+            )}
+
+            <div class="wx-cards">
+              <div class="wx-card">
+                <h4>服装・装い</h4>
+                <ul>{advice.clothing.map((s) => <li>{s}</li>)}</ul>
+              </div>
+              <div class="wx-card">
+                <h4>遊び方の目安</h4>
+                <ul>{advice.play.map((s) => <li>{s}</li>)}</ul>
+              </div>
+              <div class="wx-card">
+                <h4>持ち物</h4>
+                <ul>{advice.items.map((s) => <li>{s}</li>)}</ul>
+              </div>
+            </div>
+
+            <ul class="weather__forecast" aria-label="今後の予報">
+              {wx.daily.map((d) => {
+                const w = describe(d.code);
+                const pop = d.pop != null ? `${Math.round(d.pop)}%` : '—';
+                return (
+                  <li>
+                    <span class="weather__day">{fmtDay(d.date)}</span>
+                    <span class="weather__day-icon" aria-hidden="true">{w.icon}</span>
+                    <span class="weather__day-label">{w.label}</span>
+                    <span class="weather__day-temp">{Math.round(d.tmin)}° / {Math.round(d.tmax)}°</span>
+                    <span class="weather__day-pop">雨 {pop}</span>
+                  </li>
+                );
+              })}
+            </ul>
+            <p class="weather__note">
+              表示は公園周辺の参考値です{wx.observedAt ? `（観測時刻 ${fmtObserved(wx.observedAt)}）` : ''}。潮の強さや突風、気温の変化にご注意いただき、出発前には気象庁などの最新情報もあわせてご確認ください。
+            </p>
+          </>
+        ) : (
+          <>
+            <div class="weather__current">
+              <p class="weather__loading">現在、天気データを取得できませんでした。しばらくしてからページをご確認ください。</p>
+            </div>
+            <p class="weather__note">
+              潮の強さや突風、気温の変化にご注意いただき、出発前には気象庁などの最新情報をご確認ください。
+            </p>
+          </>
+        )
+      }
+    </div>
+  </div>
+</section>

@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "check:build": "node scripts/check-build.mjs"
+    "check:build": "node scripts/check-build.mjs",
+    "deploy": "astro build && npx wrangler deploy"
   },
   "dependencies": {
     "astro": "7.1.6"

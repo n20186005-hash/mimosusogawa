@@ -22,8 +22,20 @@ pnpm check:build
 公開先のURLが決まったら、ビルド時に `PUBLIC_SITE_URL` を設定すると、各ページに正規URLと絶対形式の共有画像URLが出力されます。
 
 ```sh
-PUBLIC_SITE_URL=https://example.jp pnpm build
+PUBLIC_SITE_URL=https://mimosusogawa.com pnpm build
 ```
+
+## Cloudflare Workers への手動デプロイ
+
+本サイトは静的サイト（`output: 'static'`）です。ビルド後に出来た `dist/` の中身を Cloudflare Workers の静的アセットとしてアップロードしてください。アップロード不要なファイル（node_modules・.astro・dist の元ファイルなど）は `.gitignore` で除外しています。
+
+## 追加された機能
+
+- **SEO 実体束縛**: JSON-LD（`TouristAttraction` + `@id`/`image`/`geo`/`hasMap`/`sameAs`/`isAccessibleForFree`、`FAQPage`）、正規 URL・OG 画像、H1/H2 の実体要素、Google マップ埋め込みと公式観光リンク。
+- **Google 評価**: 評価・件数はページに表示し、出所（Google マップ ユーザー評価・2026年9月同期・著作権帰属）を明記。評価本文は JSON-LD には含めません。
+- **天気・潮風**: `dist/` 公開後にブラウザで直近の状況と数日先の予報を取得し、30分間キャッシュします（静的サイトのため、ビルド時ではなく閲覧時に取得）。
+- **周辺施設・季節・類型ルート・出典**: 特定店名を推奨せず「種類」で中立に紹介。非営利の観光・史跡ガイドとしての E-E-A-T を強化。
+- **PWA**: `manifest.webmanifest`・アイコン・`sw.js`（同じ起点のみキャッシュ、天気 API は常に最新）。
 
 ## ページ
 
@@ -32,7 +44,7 @@ PUBLIC_SITE_URL=https://example.jp pnpm build
 - `/history/` — 壇ノ浦と長州砲の歴史
 - `/kanmon-tunnel/` — 関門トンネル人道
 - `/itineraries/` — 時間別モデルコース
-- `/access/` — 交通・駐車場
+- `/access/` — 交通・駐車場（空港・タクシー含む）
 - `/food/` — 周辺の食事
 - `/photo-spots/` — 撮影ガイドと写真出典
 - `/faq/` — よくある質問

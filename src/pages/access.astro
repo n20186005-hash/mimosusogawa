@@ -20,13 +20,27 @@ import SectionHeading from '@/components/SectionHeading.astro';
 
   <section class="section section--white">
     <div class="shell">
-      <SectionHeading eyebrow="出発地から選ぶ" title="四つの行き方。" lead="時刻表は固定せず、利用日に最新の運行情報を確認してください。" />
+      <SectionHeading eyebrow="出発地から選ぶ" title="七つの行き方。" lead="時刻表は固定せず、利用日に最新の運行情報を確認してください。" />
       <div class="transport-grid">
-        <article class="transport-card" data-reveal><span class="transport-card__icon">駅</span><h3>下関駅から</h3><p class="transport-card__time">バスで約12〜15分</p><p>長府・唐戸方面へ向かう路線のうち「御裳川」を通る便を利用します。下車後、公園は海側のすぐそばです。</p><ul><li>行き先表示と御裳川経由を乗車前に確認</li><li>帰りの下関駅方面バス停も到着時に確認</li></ul></article>
-        <article class="transport-card" data-reveal><span class="transport-card__icon">新</span><h3>新下関駅から</h3><p class="transport-card__time">バス・鉄道を乗り継ぐ</p><p>新下関駅から路線バスを利用するか、下関駅・唐戸方面へ移動して御裳川行きへ乗り継ぎます。直通の有無は利用日の検索が確実です。</p><ul><li>新幹線到着時刻から逆算</li><li>荷物が大きい場合は乗り継ぎ時間に余裕を</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">駅</span><h3>下関駅から</h3><p class="transport-card__time">バスで約12〜15分</p><p>下関駅のバスターミナルから、唐戸・長府方面へ向かう路線のうち「御裳川（みもすそがわ）」を通る便に乗車します。下車後、公園は海側のすぐそばです。</p><ul><li>行き先表示と「御裳川」経由を乗車前に確認</li><li>帰りの下関駅方面バス停も到着時に確認</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">新</span><h3>新下関駅から</h3><p class="transport-card__time">バス・鉄道を乗り継ぐ</p><p>新下関駅から路線バスを利用するか、下関駅・唐戸方面へ移動して御裳川行きへ乗り継ぎます。新幹線で到着した方は、まず下関駅か唐戸を目指すのが一般的です。</p><ul><li>新幹線到着時刻から逆算して検索</li><li>荷物が大きい場合は乗り継ぎ時間に余裕を</li></ul></article>
         <article class="transport-card" data-reveal><span class="transport-card__icon">唐</span><h3>唐戸から</h3><p class="transport-card__time">バスで御裳川方面へ</p><p>唐戸市場、カモンワーフ、赤間神宮を見たあと、国道沿いのバス停から御裳川方面へ。半日コースに最も組み込みやすい移動です。</p><ul><li>市場から赤間神宮は徒歩でつなげやすい</li><li>御裳川下車後は公園から人道へ</li></ul></article>
         <article class="transport-card" data-reveal><span class="transport-card__icon">門</span><h3>門司側から</h3><p class="transport-card__time">人道を歩いて約15分</p><p>和布刈側の入口から関門トンネル人道へ。県境を越え、下関側のエレベーターを上がると公園のすぐ近くです。</p><ul><li>歩行者は人道を無料で通行</li><li>門司港中心部から入口までは別途移動</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">空</span><h3>空港から</h3><p class="transport-card__time">鉄道・バスで約1〜2時間</p><p>最寄りの<strong>山口宇部空港</strong>からは空港連絡バスや鉄道で下関・新山口方面へ。広域からは<strong>福岡空港</strong>を利用し、地下鉄で博多へ出て新幹線で新下関・下関へ。その後、路線バスで御裳川方面へ向かいます。</p><ul><li>空港からの直行便はなく乗り継ぎが必要</li><li>到着に合わせた鉄道・バスの検索を</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">タ</span><h3>タクシーで</h3><p class="transport-card__time">下関駅から約10分</p><p>下関駅前のタクシー乗り場から「御裳川（みもすそがわ）」を目指します。公道を通るため渋滞の影響を受け、時間帯により所要が変わります。人数や荷物が多い場合の移動に便利です。</p><ul><li>行き先は「御裳川」と伝える</li><li>帰りのタクシーは事前予約が安心</li></ul></article>
+        <article class="transport-card" data-reveal><span class="transport-card__icon">レ</span><h3>レンタカーで</h3><p class="transport-card__time">下関ICから約10分</p><p>中国自動車道・下関インターチェンジから国道へ出て約10分。関門トンネル人道下関側入口の無料駐車場（一般車40台）を利用すると、公園と人道へ続けて向かえます。</p><ul><li>満車時は市場周辺の駐車場と組み合わせ</li><li>国道は交通量が多いので注意</li></ul></article>
       </div>
+
+      <div class="transport-detail" data-reveal>
+        <h3 class="transport-detail__title">公共交通で行く（下関駅 → 公園）</h3>
+        <ol class="transport-detail__steps">
+          <li><strong>下関駅のバスターミナルへ</strong><span>西口側のバス乗り場から、唐戸・長府方面の路線を探します。</span></li>
+          <li><strong>「御裳川」経由の便を確認</strong><span>行き先表示に「御裳川」がある便に乗車します。便によって経由が異なるため、乗車前に確認を。</span></li>
+          <li><strong>御裳川で下車</strong><span>バス停を降りると、公園と関門海峡がすぐそばに見えます。海側へ向かって徒歩で到着です。</span></li>
+          <li><strong>帰りは同じバス停から</strong><span>下関駅方面の便は、来たバス停の近くから出ることが多いですが、乗り場の位置は到着時にあらためて確認してください。</span></li>
+        </ol>
+      </div>
+
       <div class="notice" style="margin-top:26px"><span>注</span><div>道路状況、ダイヤ改正、運休により移動時間は変わります。利用日の時刻表をサンデン交通などでご確認ください。</div></div>
       <div style="margin-top:28px"><a class="button button--primary" href="https://www.sandenkotsu.co.jp/" target="_blank" rel="noopener">最新のバス情報を見る <span class="button__icon" aria-hidden="true">↗</span></a></div>
     </div>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="みもすそ川公園">
+  <rect width="512" height="512" fill="#17384c"/>
+  <path d="M64 306 Q256 176 448 306" fill="none" stroke="#f4f0e7" stroke-width="24" stroke-linecap="round"/>
+  <path d="M64 348 Q256 230 448 348" fill="none" stroke="#7f9a90" stroke-width="11" stroke-linecap="round" opacity="0.7"/>
+  <g stroke="#cdd8d2" stroke-width="13" stroke-linecap="round">
+    <path d="M148 306 L148 252"/>
+    <path d="M256 296 L256 232"/>
+    <path d="M364 306 L364 252"/>
+  </g>
+  <path d="M60 416 q42 -28 84 0 t84 0 t84 0 t84 0 t84 0" fill="none" stroke="#7f9a90" stroke-width="13" opacity="0.85"/>
+  <circle cx="256" cy="412" r="9" fill="#a44235"/>
+</svg>

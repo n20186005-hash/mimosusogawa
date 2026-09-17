@@ -1,0 +1,37 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { attraction, reviewsSourceNote } from '@/data/attraction';
+
+const full = Math.floor(attraction.rating);
+const displayStars = '★'.repeat(full) + '☆'.repeat(5 - full);
+// 内联小字：正文 + 链接，链接文字为「点击查看谷歌地图全部评价↗」
+const inlinePrefix = '评分与评价数同步自谷歌地图（Google Maps）用户评价 · ' + attraction.reviewSyncMonth + ' · ';
+---
+
+<section class="section section--white" id="reviews" aria-labelledby="reviews-title">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="访客的评价"
+      title="谷歌地图用户评价"
+      lead="以下评分与评价数为谷歌地图（Google Maps）用户评价的同步快照，仅供出行参考。"
+    />
+    <div class="reviews" data-reveal>
+      <div class="reviews__head">
+        <div class="reviews__score">
+          <span class="reviews__rating">{attraction.rating.toFixed(1)}</span>
+          <span class="reviews__stars" aria-hidden="true">{displayStars}</span>
+          <span class="reviews__count">（{attraction.reviewCountDisplay}）</span>
+        </div>
+        <p class="reviews__inline">
+          {inlinePrefix}<a href={attraction.mapsUrl} target="_blank" rel="noopener">点击查看谷歌地图全部评价↗</a>
+        </p>
+      </div>
+
+      <p class="reviews__copyright">{reviewsSourceNote}</p>
+
+      <a class="button button--primary" href={attraction.mapsUrl} target="_blank" rel="noopener">
+        在谷歌地图查看全部评价 <span class="button__icon" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

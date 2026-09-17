@@ -1,0 +1,30 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { attraction } from '@/data/attraction';
+---
+
+<section class="section" id="location" aria-labelledby="location-title">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="場所を確認"
+      title="みもすそ川公園（下関市）の所在地"
+      lead="関門海峡でもっとも幅の狭い早鞆ノ瀬戸に面し、壇ノ浦古戦場跡と関門橋がすぐそばにあります。"
+    />
+    <div class="map-embed" data-reveal>
+      <iframe
+        src={attraction.mapsEmbedSrc}
+        title="Google マップ：みもすそ川公園"
+        width="100%"
+        height="450"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <p class="map-embed__official">
+      最新の観光情報や周辺施設は
+      <a href={attraction.govTourismUrl} target="_blank" rel="noopener noreferrer">山口県公式観光サイト（おいでませ山口へ）</a>
+      でご確認いただけます。
+    </p>
+  </div>
+</section>

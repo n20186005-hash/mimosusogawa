@@ -1,0 +1,71 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const knowledge = [
+  {
+    icon: '史',
+    title: '歴史の背景・物語・伝説',
+    body: '「みもすそ川」は関門海峡でもっとも幅の狭い早鞆ノ瀬戸に面する古い地名です。1185年、源氏と平家はこの海で最後の決戦（壇ノ浦の戦い）を迎え、『平家物語』は安徳天皇の入水と二位尼の姿を描きます。幕末には長州藩が海峡へ砲台を向け、攘夷から開国へと針路を変えました。公園の像や碑は、史料で確かめられる事実と、物語・伝承とを分けて読むと、現地がいっそう立体的に見えてきます。'
+  },
+  {
+    icon: '潮',
+    title: '海峡の科学',
+    body: '早鞆ノ瀬戸は日本でもっとも潮の流れが速い海峡の一つです。幅が狭く、1日2回の満潮・干潮で水位が入れ替わるため、大潮のとき潮流は時速8〜11km前後（約4〜6ノット）に達することもあります。満ち引きで流れの向きが反転し、この「巻き潮」の渦が海峡を動かします。潮位や流速は気象庁の潮位表・海象観測で確認できます。'
+  },
+  {
+    icon: '生',
+    title: '生態と野鳥',
+    body: '海峡の強い潮流は海水を絶えず入れ替え、潮の透明度が高まる日もあります。門司・和布刈方面にはウミネコの生息地があり、カモメ類や渡り鳥の姿も季節によって見られます。磯の生物や海峡を往来する魚類など、海辺の生態を観察する目安にもなります。'
+  }
+];
+
+const responsibilities = [
+  {
+    title: '安全に歩く',
+    body: '潮の満ち引きは早く、岸辺や磯は滑りやすいです。強風の日は傘より雨具を、波打ち際には近づかないようご注意ください。磯や岩場への立ち入りは避け、岸から観察しましょう。'
+  },
+  {
+    title: '環境を守る',
+    body: '持ち込んだごみは必ず持ち帰り、生き物や植物を傷つけないようお願いします。海辺の生態は触れるほどに変わるため、見るだけの距離を保つことが保護につながります。'
+  },
+  {
+    title: '史跡とマナー',
+    body: '像・碑・砲などの史跡は公共の財産です。刻んだり傷つけたりしないよう、立入禁止や規制区域は守ってください。撮影時は通路をふさがず、他の利用者への配慮をお願いします。'
+  }
+];
+---
+
+<section class="section section--white" id="science" aria-labelledby="science-title">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="海峡を知る"
+      title="公園の背景と、訪れるときの責任"
+      lead="歴史の物語、海峡のしくみ、海辺の生態——この場所をより深く味わうための手がかりと、訪問者として守りたいこと。"
+    />
+    <div class="science-grid">
+      {knowledge.map((k) => (
+        <article class="science-card" data-reveal>
+          <span class="science-card__icon" aria-hidden="true">{k.icon}</span>
+          <h3>{k.title}</h3>
+          <p>{k.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="science-responsibility" data-reveal>
+      <p class="science-responsibility__label">訪問者としての責任</p>
+      <div class="resp-items">
+        {responsibilities.map((r) => (
+          <div class="resp-item">
+            <h4>{r.title}</h4>
+            <p>{r.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p style="margin-top:28px;text-align:center">
+      <a class="text-link" href="/history/">壇ノ浦と長州砲の物語を読む <span aria-hidden="true">→</span></a>
+    </p>
+  </div>
+</section>

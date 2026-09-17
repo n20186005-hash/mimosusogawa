@@ -1,0 +1,92 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+// 関門海峡・下関の気候に基づく四季の戦略。
+// 数値は気象庁の平年値（下関、1991–2020年）を参考とした目安。
+// 米国の NOAA / FWC ではなく、日本の一次情報（気象庁）に基づく。
+const seasons = [
+  {
+    name: '春（3〜5月）',
+    temp: '平均気温 約14℃',
+    rain: '降水量 やや多め',
+    climate: '穏やかな高気圧が多く、海峡の風も和らぎます。桜と潮風が重なる時期で、散歩に適した日が続きます。',
+    tide: '潮の流れが読みやすく、像と橋の構図が撮りやすい季節です。水温も上がり始め、磯の生物が動き出します。',
+    wildlife: 'ウミネコ（門司・和布刈方面の生息地）やカモメ類の姿が見られ、海峡の鳥類観察に適します。',
+    photo: '午前の順光、青空と青銅の像のコントラストが際立ちます。',
+    comfort: '快適',
+    comfortLevel: 5
+  },
+  {
+    name: '夏（6〜8月）',
+    temp: '平均気温 約25℃',
+    rain: '降水量 最多（梅雨・台風）',
+    climate: '梅雨の雨と、その後の厳しい日差し・湿度が特徴です。夕方は海峡の風が涼しく感じられます。熱中症対策が必要です。',
+    tide: '台風期には潮が荒れ、濁りやすく、人道や岸辺の安全確認が重要です。海況は半年で最も変わりやすい時期です。',
+    wildlife: '海況が不安定なぶん、磯の生物の観察機会は減ります。猛暑のなか、日影と水分補給を欠かさずに。',
+    photo: '夕暮れの橋の灯り、明暗の差が大きい時間帯が狙い目です。',
+    comfort: '暑さ対策で午前・夕方',
+    comfortLevel: 3
+  },
+  {
+    name: '秋（9〜11月）',
+    temp: '平均気温 約19℃',
+    rain: '降水量 やや多め',
+    climate: '空気が乾燥し、高気圧に伴う抜けるような展望が得やすい、もっとも歩きやすい季節の一つです。',
+    tide: '秋雨前線の通過に注意しつつ、晴れ間の日は海峡全体が見通せます。潮の透明度が高まる日が増えます。',
+    wildlife: '渡り鳥の季節。海峡を往来する鳥類や、晴れた日の遠方まで見通せる条件がそろいます。',
+    photo: '比較的安定した光のなか、橋と史跡をバランスよく収められます。',
+    comfort: '快適',
+    comfortLevel: 5
+  },
+  {
+    name: '冬（12〜2月）',
+    temp: '平均気温 約7℃',
+    rain: '降水量 最少',
+    climate: '北風が強く、体感温度が下がります。晴れた日は空が高く、遠方まで見渡せる魅力があります。防寒が必須です。',
+    tide: '冬の荒波は迫力がありますが、岸辺では風と波にご注意ください。透明度の高い日も多く、潮の流れがよく分かります。',
+    wildlife: '晴天時は海峡の野鳥や対岸までの眺望が楽しめます。強風の日は観察より安全確保を優先してください。',
+    photo: '低い太陽の斜光が橋と像をドラマチックに照らします。',
+    comfort: '防寒必須',
+    comfortLevel: 4
+  }
+];
+---
+
+<section class="section section--white" id="season" aria-labelledby="season-title">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="季節で選ぶ"
+      title="四季の海峡と過ごし方"
+      lead="気象庁の平年値（下関、1991–2020年）を参考に、気候・潮・生態を組み合わせた季節ごとの目安です。天候は年によって変わりますので、あくまで目安としてご活用ください。"
+    />
+    <div class="season-table" role="table" aria-label="季節別の過ごし方">
+      <div class="season-table__head" role="row">
+        <span role="columnheader">季節</span>
+        <span role="columnheader">気候（平年値の目安）</span>
+        <span role="columnheader">潮と海況</span>
+        <span role="columnheader">生態・野鳥</span>
+        <span role="columnheader">撮影の目安</span>
+        <span role="columnheader">快適度</span>
+      </div>
+      {seasons.map((s) => (
+        <div class="season-table__row" role="row">
+          <span role="cell" class="season-table__name">{s.name}</span>
+          <span role="cell">
+            <span class="season-table__stat">{s.temp}・{s.rain}</span>
+            {s.climate}
+          </span>
+          <span role="cell">{s.tide}</span>
+          <span role="cell">{s.wildlife}</span>
+          <span role="cell">{s.photo}</span>
+          <span role="cell">
+            <span class="season-meter" aria-label={s.comfort}>
+              {'●'.repeat(s.comfortLevel)}<span class="season-meter__off">{'●'.repeat(5 - s.comfortLevel)}</span>
+            </span>
+            <small>{s.comfort}</small>
+          </span>
+        </div>
+      ))}
+    </div>
+    <p class="season-foot">数値は気象庁の平年値をもとにした参考値です。潮の強さや突風、気温の変化は日ごとに異なるため、出発前に最新の天気・潮位情報をご確認ください。</p>
+  </div>
+</section>

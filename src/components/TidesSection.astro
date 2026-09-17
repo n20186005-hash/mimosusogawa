@@ -1,0 +1,98 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+// 正確な満干潮の時刻・高さは気象庁の潮位表（田ノ首・下関市）が一次情報。
+// 本節は「仕組み＋見学の目安」を静的に提供し、正確な時刻は同表へ誘導する。
+const jmaTideUrl = 'https://www.data.jma.go.jp/kaiyou/db/tide/suisan/suisan.php?stn=TI';
+
+const mechanism = [
+  {
+    term: '1日2回の満潮・干潮',
+    body: '関門海峡は半日周期の潮汐で、約12時間25分ごとに満潮と干潮を繰り返します。1日の中で海面の高さが何度も入れ替わります。'
+  },
+  {
+    term: '海峡は流れが速い',
+    body: '幅が最も狭い早鞆ノ瀬戸（はやともノせと）では、大潮のとき潮流が時速8〜11km前後（約4〜6ノット）に達することもあり、大型船もゆっくりと流れに乗って通ります。'
+  },
+  {
+    term: '流れの向きが変わる',
+    body: '潮が満ちるときと引くときで、海峡の流れの向きが反転します。この「巻き潮」の渦が、像と関門橋のあいだの海を動かします。'
+  }
+];
+
+const tips = [
+  { title: 'おすすめは大潮の前後', body: '新月・満月の近く（大潮）は、潮の動きがもっともダイナミックで、海峡の迫力を感じやすい時期です。' },
+  { title: '干潮の岩場を観察', body: '干潮時は岩場が広がり、潮だまりや野鳥の姿が見られます。ただし磯には降りず、岸から安全に観察してください。' },
+  { title: '写真の表情が変わる', body: '満潮で船の高低が変わり、干潮で岩肌が現れるなど、同じ構図でも潮位で印象が変わります。' }
+];
+
+const glossary = [
+  { word: '満潮', mean: '海面がいちばん高くなるとき' },
+  { word: '干潮', mean: '海面がいちばん低くなるとき' },
+  { word: '大潮', mean: '新月・満月の近く。潮の動きが大きい' },
+  { word: '中潮', mean: '大潮と小潮のあいだ' },
+  { word: '小潮', mean: '上弦・下弦の近く。潮の動きが小さい' },
+  { word: '潮流', mean: '潮の満ち引きで生じる海の流れ' },
+  { word: '巻き潮', mean: '狭い海峡で向きが反転する強い渦潮' }
+];
+---
+
+<section class="section" id="tides" aria-labelledby="tides-title">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="海峡のしくみ"
+      title="関門海峡の潮（潮汐）と見学の目安"
+      lead="公園の目の前、早鞆ノ瀬戸は日本でもっとも潮の流れが速い海峡の一つです。満ち引きのリズムを知ると、海辺の景色がもう一つ深く見えます。"
+    />
+
+    <div class="tides-grid">
+      <div class="tides-col" data-reveal>
+        <h3 class="tides-col__title">潮のメカニズム</h3>
+        <ul class="tides-list">
+          {mechanism.map((m) => (
+            <li>
+              <strong>{m.term}</strong>
+              <p>{m.body}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div class="tides-glossary">
+          <span class="tides-glossary__label">潮汐用語</span>
+          <ul>
+            {glossary.map((g) => (
+              <li><b>{g.word}</b><span>{g.mean}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="tides-col" data-reveal>
+        <h3 class="tides-col__title">見学の目安</h3>
+        <div class="tides-tips">
+          {tips.map((t) => (
+            <div class="tides-tip">
+              <span class="tides-tip__icon" aria-hidden="true">潮</span>
+              <div>
+                <strong>{t.title}</strong>
+                <p>{t.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="tides-source">
+          <p class="tides-source__note">
+            満潮・干潮の時刻と高さは、気象庁の潮位表（天文潮位）をご確認ください。気象による増減があり、実際の潮位と異なることがあります。
+          </p>
+          <a class="button button--primary" href={jmaTideUrl} target="_blank" rel="noopener noreferrer">
+            気象庁の潮位表を見る（田ノ首・下関市） <span class="button__icon" aria-hidden="true">↗</span>
+          </a>
+          <p class="tides-source__safety">
+            潮の満ち引きは早く、磯や岸辺は滑りやすいです。岸からの観察を基本とし、時間帯による潮位変化にご注意ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

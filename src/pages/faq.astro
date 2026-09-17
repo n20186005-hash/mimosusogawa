@@ -2,58 +2,61 @@
 import Layout from '@/layouts/Layout.astro';
 import PageHero from '@/components/PageHero.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
+import { faqSections, faqItems } from '@/data/attraction';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
+  }))
+};
 ---
 
-<Layout title="よくある質問" description="みもすそ川公園の料金、所要時間、アクセス、駐車場、関門トンネル人道、子ども連れ、雨の日、紙芝居、長州砲について回答します。">
-  <PageHero eyebrow="旅の手引き" title="出発前の疑問を、ここで。" lead="公園の料金と所要時間、バス、駐車場、海底トンネル、子ども連れ。現地で迷いやすいことを、旅の順番に沿ってまとめました。" image="/images/mimosuso-bridge.jpg" imageAlt="みもすそ川公園の赤い橋と関門橋" position="center" />
+<Layout
+  title="よくある質問"
+  description="みもすそ川公園の料金、所要時間、アクセス、駐車場、関門トンネル人道、子ども連れ、雨の日、紙芝居、長州砲について回答します。"
+  schema={faqSchema}
+>
+  <PageHero
+    eyebrow="旅の手引き"
+    title="出発前の疑問を、ここで。"
+    lead="公園の料金と所要時間、バス、駐車場、海底トンネル、子ども連れ。現地で迷いやすいことを、旅の順番に沿ってまとめました。"
+    image="/images/mimosuso-bridge.jpg"
+    imageAlt="みもすそ川公園の赤い橋と関門橋"
+    position="center"
+  />
+
+  {
+    faqSections.map((section) => (
+      <section class="section section--white">
+        <div class="shell">
+          <SectionHeading eyebrow="公園について" title={section.heading} />
+          <div class="faq-list narrow">
+            {section.items.map((item, i) => (
+              <details open={section.heading === '公園について' && i === 0}>
+                <summary>
+                  <span class="faq-list__q">問</span>
+                  <span>{item.question}</span>
+                  <span class="faq-list__toggle" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-list__answer"><p>{item.answer}</p></div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
 
   <section class="section">
     <div class="shell">
-      <SectionHeading eyebrow="公園について" title="料金・時間・見どころ。" />
-      <div class="faq-list narrow">
-        <details open><summary><span class="faq-list__q">問</span><span>公園の入園料は必要ですか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>公園は無料で見学できます。園内の像、碑、長州砲、海峡沿いの景色を自由に楽しめます。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>見学時間はどれくらいですか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>公園だけなら30〜45分が目安です。説明を丁寧に読み、船や潮を眺めるなら1時間ほどあるとゆったりできます。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>公園で何を見るべきですか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>源義経・平知盛像、壇ノ浦古戦場碑、長州砲、関門橋が中心です。海沿いで潮流と船も眺めると、史跡と地形がつながります。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>紙芝居は毎日ありますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>通常の実施時間が案内されていますが、休演日や天候による変更があります。山口県観光サイトの最新情報をご確認ください。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>長州砲はいつ鳴りますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>中央の一門では通常、日中の毎正時に発射音と煙の演出があります。運営状況により変わることがあるため、現地案内を優先してください。</p></div></details>
+      <div class="notice narrow" style="margin-top:34px">
+        <span>注</span>
+        <div>交通、施設、演出の内容は変更される場合があります。出発前に公式観光情報と現地案内をご確認ください。</div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="shell">
-      <SectionHeading eyebrow="行き方について" title="バス・自動車・駐車場。" />
-      <div class="faq-list narrow">
-        <details><summary><span class="faq-list__q">問</span><span>下関駅からどう行きますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>路線バスで「御裳川」バス停へ向かいます。所要は交通状況により約12〜15分が目安で、下車後は公園のすぐ近くです。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>唐戸市場から行けますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>唐戸エリアの国道沿いから御裳川方面のバスを利用できます。唐戸市場、赤間神宮、公園を半日でつなぐルートがおすすめです。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>駐車場はありますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>関門トンネル人道下関側入口に無料駐車場があります。一般車40台、大型バス1台を収容し、公園と人道の両方へ歩いて向かえます。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>トイレやエレベーターはありますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>関門トンネル人道下関側入口に多機能トイレとエレベーターがあります。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>門司側から公園へ行けますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>和布刈側から関門トンネル人道を歩き、下関側へ上がると、公園はすぐ近くです。</p></div></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="shell">
-      <SectionHeading eyebrow="関門トンネル人道" title="海底を歩く前に。" />
-      <div class="faq-list narrow">
-        <details><summary><span class="faq-list__q">問</span><span>人道は有料ですか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>歩行者は無料です。自転車と原付は20円で、乗らずに押して通行します。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>人道は何時まで通れますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>通常は6時から22時まで通行できます。設備点検などで変更される場合があるため、利用前に最新情報をご確認ください。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>門司まで歩くと何分かかりますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>人道部分は片道約15分が目安です。公園から入口への移動、エレベーター、写真撮影、門司側の散策時間を別に見てください。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>キャリーケースやベビーカーで通れますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>入口にはエレベーターがあり、通行できます。ただし人道内は長いゆるやかな坂なので、荷物と体力に余裕を持ってください。</p></div></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="shell">
-      <SectionHeading eyebrow="天候・子ども・写真" title="歩きやすさと安全。" />
-      <div class="faq-list narrow">
-        <details><summary><span class="faq-list__q">問</span><span>雨の日でも楽しめますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>公園は屋外ですが、人道は雨を避けて歩けます。海沿いは風が強くなることがあるため、雨具があると安心です。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>子ども連れに向いていますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>船、橋、海底県境など子どもにも分かりやすい見どころがあります。車道と海沿いでは手をつなぎ、海底県境まで往復する場合は休憩を含めて計画してください。</p></div></details>
-        <details><summary><span class="faq-list__q">問</span><span>夜でも写真を撮れますか？</span><span class="faq-list__toggle" aria-hidden="true"></span></summary><div class="faq-list__answer"><p>橋の灯りや海峡の夜景を撮れますが、足元、車道、海沿いの風に注意してください。園内や施設の利用案内に従いましょう。</p></div></details>
-      </div>
-      <div class="notice narrow" style="margin-top:34px"><span>注</span><div>交通、施設、演出の内容は変更される場合があります。出発前に公式観光情報と現地案内をご確認ください。</div></div>
     </div>
   </section>
 </Layout>

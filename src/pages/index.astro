@@ -2,32 +2,48 @@
 import Layout from '@/layouts/Layout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import ResponsiveImage from '@/components/ResponsiveImage.astro';
+import EntityIntro from '@/components/EntityIntro.astro';
+import GoogleReviews from '@/components/GoogleReviews.astro';
+import WeatherWidget from '@/components/WeatherWidget.astro';
+import TidesSection from '@/components/TidesSection.astro';
+import VisitorServices from '@/components/VisitorServices.astro';
+import SeasonalStrategy from '@/components/SeasonalStrategy.astro';
+import GroupItineraries from '@/components/GroupItineraries.astro';
+import RecommendedRoutes from '@/components/RecommendedRoutes.astro';
+import ScienceResponsibility from '@/components/ScienceResponsibility.astro';
+import GoogleMap from '@/components/GoogleMap.astro';
+import SourcesSection from '@/components/SourcesSection.astro';
+import { attraction } from '@/data/attraction';
+
+const heroImage = `${attraction.siteUrl}/images/hero-statues.jpg`;
 
 const schema = [
   {
     '@context': 'https://schema.org',
     '@type': ['TouristAttraction', 'Park'],
-    name: 'みもすそ川公園',
-    alternateName: '御裳川公園',
-    description: '壇ノ浦古戦場跡、源義経・平知盛像、長州砲、関門橋を望む海辺の公園。',
+    '@id': `${attraction.siteUrl}/#attraction`,
+    name: attraction.fullName,
+    alternateName: [attraction.shortName, `${attraction.city} ${attraction.fullName}`, attraction.englishName],
+    description: `Comprehensive visitor guide to ${attraction.fullName} in ${attraction.city}, ${attraction.state}, ${attraction.country}. 壇ノ浦古戦場跡、源義経・平知盛像、長州砲、関門橋を望む海辺の公園。`,
+    url: attraction.siteUrl,
+    image: [heroImage],
     isAccessibleForFree: true,
+    touristType: ['歴史散策', '写真撮影', 'まち歩き'],
     address: {
       '@type': 'PostalAddress',
-      postalCode: '751-0813',
-      addressRegion: '山口県',
-      addressLocality: '下関市',
-      streetAddress: 'みもすそ川町'
+      streetAddress: attraction.streetAddress,
+      addressLocality: attraction.city,
+      addressRegion: attraction.state,
+      postalCode: attraction.postalCode,
+      addressCountry: attraction.countryCode
     },
-    touristType: ['歴史散策', '写真撮影', 'まち歩き']
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: '公園の入園料は必要ですか？', acceptedAnswer: { '@type': 'Answer', text: '公園は無料で見学できます。' } },
-      { '@type': 'Question', name: '見学にはどれくらいかかりますか？', acceptedAnswer: { '@type': 'Answer', text: '公園だけなら30〜45分、関門トンネル人道の海底県境まで往復するなら約90分が目安です。' } },
-      { '@type': 'Question', name: '本州から九州まで歩けますか？', acceptedAnswer: { '@type': 'Answer', text: '関門トンネル人道を利用して、下関から門司まで歩いて渡れます。' } }
-    ]
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: attraction.latitude,
+      longitude: attraction.longitude
+    },
+    hasMap: attraction.mapsUrl,
+    sameAs: [attraction.mapsUrl, attraction.govTourismUrl]
   }
 ];
 ---
@@ -39,12 +55,12 @@ const schema = [
   bodyClass="home"
 >
   <section class="home-hero" aria-labelledby="home-title">
-    <ResponsiveImage class="home-hero__image" src="/images/hero-statues.jpg" alt="源義経と平知盛の像、その上を渡る関門橋" sizes="100vw" loading="eager" fetchpriority="high" />
+    <ResponsiveImage class="home-hero__image" src="/images/hero-statues.jpg" alt="みもすそ川公園（下関市）の源義経と平知盛の像、その上を渡る関門橋" sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="home-hero__veil"></div>
     <div class="home-hero__texture"></div>
     <div class="shell shell--wide home-hero__content">
       <p class="home-hero__place">山口県下関市・早鞆ノ瀬戸</p>
-      <h1 id="home-title">海峡の風と、<br /><span>八百年の記憶。</span></h1>
+      <h1 id="home-title">みもすそ川公園（下関市）<br /><span>海峡の風と、八百年の記憶。</span></h1>
       <p class="home-hero__lead">壇ノ浦古戦場、長州砲、関門トンネル人道。<br />本州と九州が向かい合う、歴史の海辺を歩く。</p>
       <div class="home-hero__actions">
         <a class="button button--light" href="#highlights">見どころを知る <span class="button__icon" aria-hidden="true">↓</span></a>
@@ -65,22 +81,7 @@ const schema = [
     </div>
   </aside>
 
-  <section class="section washi-texture">
-    <div class="shell intro-grid">
-      <div class="intro-grid__title" data-reveal>
-        <p class="kicker">海峡から始まる旅</p>
-        <h2>一つの海峡、<br /><em>二つ</em>の戦い、<br />三つの体験。</h2>
-      </div>
-      <div class="intro-grid__copy" data-reveal>
-        <p>みもすそ川公園の前に広がるのは、関門海峡で最も幅が狭い早鞆ノ瀬戸。潮が筋を描き、船が間近を通り、頭上には関門橋が架かります。</p>
-        <p>ここは、源氏と平家の最後の戦いが繰り広げられた壇ノ浦であり、幕末には長州藩が外国船に向けて砲台を築いた場所。そして今は、海底の人道を歩いて本州から九州へ渡る旅の出発点です。</p>
-        <blockquote class="intro-grid__quote">
-          <span aria-hidden="true">潮</span>
-          <p>公園を見るだけで終わらせず、目の前の海と、対岸へ続く道まで歩いてみる。そこで初めて、関門海峡の大きさが立ち上がります。</p>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+  <EntityIntro />
 
   <section class="section section--white" id="highlights">
     <div class="shell">
@@ -289,6 +290,26 @@ const schema = [
       <div style="margin-top:34px;text-align:center"><a class="text-link" href="/faq/">すべての質問を見る <span aria-hidden="true">→</span></a></div>
     </div>
   </section>
+
+  <GoogleReviews />
+
+  <WeatherWidget />
+
+  <TidesSection />
+
+  <VisitorServices />
+
+  <SeasonalStrategy />
+
+  <GroupItineraries />
+
+  <RecommendedRoutes />
+
+  <ScienceResponsibility />
+
+  <GoogleMap />
+
+  <SourcesSection />
 
   <section class="closing-cta">
     <img src="/images/hero-statues-1440.jpg" alt="源義経・平知盛像と関門橋" loading="lazy" />
