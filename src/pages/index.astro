@@ -24,7 +24,7 @@ const schema = [
     '@id': `${attraction.siteUrl}/#attraction`,
     name: attraction.fullName,
     alternateName: [attraction.shortName, `${attraction.city} ${attraction.fullName}`, attraction.englishName],
-    description: `Comprehensive visitor guide to ${attraction.fullName} in ${attraction.city}, ${attraction.state}, ${attraction.country}. 壇ノ浦古戦場跡、源義経・平知盛像、長州砲、関門橋を望む海辺の公園。`,
+    description: `${attraction.city}${attraction.state}のみもすそ川公園（${attraction.fullName}）の見どころ、歴史、アクセス、駐車場、所要時間を紹介する観光ガイド。壇ノ浦古戦場跡を望み、源義経・平知盛像、長州砲、関門橋を眼下に見下ろす海辺の公園です。`,
     url: attraction.siteUrl,
     image: [heroImage],
     isAccessibleForFree: true,
