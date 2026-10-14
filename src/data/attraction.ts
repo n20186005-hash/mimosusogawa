@@ -20,9 +20,9 @@ export const attraction = {
   govTourismUrl: 'https://yamaguchi-tourism.jp/spot/detail_15266.html',
   phone: '+81-83-231-1933',
   rating: 4.1,
-  reviewCount: 1611,
-  reviewCountDisplay: '1,611',
-  reviewSyncMonth: '2026 年 9 月',
+  reviewCount: 1624,
+  reviewCountDisplay: '1,624',
+  reviewSyncMonth: '2026 年 10 月',
   nearbyLandmarks: ['壇ノ浦古戦場跡', '関門橋']
 } as const;
 

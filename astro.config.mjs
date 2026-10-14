@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
-const site = process.env.PUBLIC_SITE_URL?.trim();
+const site = process.env.PUBLIC_SITE_URL?.trim() || 'https://mimosusogawa.com';
 
 export default defineConfig({
   ...(site ? { site } : {}),
