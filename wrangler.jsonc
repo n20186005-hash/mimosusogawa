@@ -3,7 +3,6 @@
   "name": "mimosusogawa",
   "compatibility_date": "2025-09-01",
   "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
+    "directory": "./dist"
   }
 }
