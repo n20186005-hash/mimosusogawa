@@ -10,6 +10,7 @@ interface Props {
   image?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
   bodyClass?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -17,7 +18,8 @@ const {
   description,
   image = '/images/hero-statues.jpg',
   schema,
-  bodyClass = ''
+  bodyClass = '',
+  noindex = false
 } = Astro.props;
 
 const pageTitle = title.includes('みもすそ川') ? title : `${title}｜みもすそ川公園`;
@@ -32,6 +34,7 @@ const socialImage = Astro.site ? new URL(image, Astro.site) : undefined;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#17384c" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -40,7 +43,7 @@ const socialImage = Astro.site ? new URL(image, Astro.site) : undefined;
     {socialImage && <meta property="og:image" content={socialImage} />}
     {socialImage && <meta property="og:image:alt" content={`${title}｜みもすそ川公園`} />}
     <meta name="twitter:card" content="summary_large_image" />
-    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {!noindex && canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icons/icon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -66,3 +69,4 @@ const socialImage = Astro.site ? new URL(image, Astro.site) : undefined;
     </script>
   </body>
 </html>
+

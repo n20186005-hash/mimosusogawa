@@ -377,9 +377,13 @@
   .wx-cards { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
+  .group-route__intro { flex-wrap: wrap; padding: 24px; }
+  .group-route__tag, .group-route__time { flex: none; white-space: nowrap; }
+  .group-route__intro h3 { flex-basis: 100%; }
   .reviews { padding: 28px 24px; }
   .weather { padding: 26px 22px; }
   .weather__forecast { grid-template-columns: repeat(3, 1fr); }
   .services-grid { grid-template-columns: 1fr; }
   .weather__current { gap: 16px; }
 }
+

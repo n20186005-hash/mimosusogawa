@@ -22,13 +22,13 @@ export const attraction = {
   rating: 4.1,
   reviewCount: 1624,
   reviewCountDisplay: '1,624',
-  reviewSyncMonth: '2026 年 10 月',
+  reviewSyncMonth: '2026年10月',
   nearbyLandmarks: ['壇ノ浦古戦場跡', '関門橋']
 } as const;
 
 // 评价来源说明（页面展示用，不写入 JSON-LD）
-export const reviewsSourceNote = `同步自 Google 地图用户评价，同步时间 ${attraction.reviewSyncMonth}；版权归原作者与 Google 地图所有`;
-export const reviewsInlineNote = `评分与评价数同步自谷歌地图（Google Maps）用户评价 · ${attraction.reviewSyncMonth} · 点击查看谷歌地图全部评价`;
+export const reviewsSourceNote = `出典：Google マップのクチコミ（${attraction.reviewSyncMonth}時点）。評価件数と平均評価は掲載時点の記録です。最新の情報は Google マップでご覧ください。`;
+export const reviewsInlineNote = `Google マップのクチコミ（${attraction.reviewSyncMonth}時点）・最新の評価を見る`;
 
 // FAQ の単一ソース（表示 DOM と JSON-LD で共有し、一致を保つ）
 export const faqSections = [
