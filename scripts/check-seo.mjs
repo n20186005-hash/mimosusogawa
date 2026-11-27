@@ -10,7 +10,9 @@ const requiredPaths = [
 const errors = [];
 const forbiddenMixedLanguageText = [
   '同步自 Google', '谷歌地图用户评价', '评分与评价数',
-  '点击查看谷歌', '版权归原作者', '連絡船で闭环'
+  '点击查看谷歌', '版权归原作者', '連絡船で闭环',
+  '亲子家庭', '摄影自然', '低体力无障碍', '访客のために',
+  '同步时间', '資料来源'
 ];
 
 const read = async (file) => {
@@ -48,8 +50,8 @@ for (const path of requiredPaths) {
   if (!/<meta\b[^>]*\bname=["']description["']/i.test(html)) {
     errors.push(`${path}: meta description がありません`);
   }
-  if (!/<h1\b/i.test(html)) {
-    errors.push(`${path}: h1 がありません`);
+  if ([...html.matchAll(/<h1\b/gi)].length !== 1) {
+    errors.push(`${path}: h1 は一つ必要です`);
   }
   if (/<meta\b[^>]*\bcontent=["'][^"']*noindex/i.test(html)) {
     errors.push(`${path}: noindex が検出されました`);
@@ -64,6 +66,14 @@ for (const path of requiredPaths) {
   }
 }
 
+const notFoundHtml = await read(join('dist', '404.html'));
+if (!/<meta\b[^>]*\bname=["']robots["'][^>]*\bcontent=["'][^"']*\bnoindex\b/i.test(notFoundHtml)) {
+  errors.push('404.html: robots noindex がありません');
+}
+if (/<link\b[^>]*\brel=["']canonical["']/i.test(notFoundHtml)) {
+  errors.push('404.html: エラーページに canonical は不要です');
+}
+
 if (!robots.includes(`Sitemap: ${origin}/sitemap.xml`)) {
   errors.push('robots.txt に正規サイトマップ URL がありません');
 }
@@ -74,3 +84,4 @@ if (errors.length) {
 } else {
   console.log(`SEO 検証完了: ${requiredPaths.length} ページの canonical、title、言語、sitemap、robots を確認しました。`);
 }
+
